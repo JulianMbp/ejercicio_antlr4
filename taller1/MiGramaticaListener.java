@@ -69,15 +69,17 @@ public interface MiGramaticaListener extends ParseTreeListener {
 	 */
 	void exitActualizacion(MiGramaticaParser.ActualizacionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link MiGramaticaParser#asignacion}.
+	 * Enter a parse tree produced by the {@code Assign}
+	 * labeled alternative in {@link MiGramaticaParser#asignacion}.
 	 * @param ctx the parse tree
 	 */
-	void enterAsignacion(MiGramaticaParser.AsignacionContext ctx);
+	void enterAssign(MiGramaticaParser.AssignContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link MiGramaticaParser#asignacion}.
+	 * Exit a parse tree produced by the {@code Assign}
+	 * labeled alternative in {@link MiGramaticaParser#asignacion}.
 	 * @param ctx the parse tree
 	 */
-	void exitAsignacion(MiGramaticaParser.AsignacionContext ctx);
+	void exitAssign(MiGramaticaParser.AssignContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Variable}
 	 * labeled alternative in {@link MiGramaticaParser#expresion}.

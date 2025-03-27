@@ -87,13 +87,13 @@ public class MiGramaticaBaseListener implements MiGramaticaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAsignacion(MiGramaticaParser.AsignacionContext ctx) { }
+	@Override public void enterAssign(MiGramaticaParser.AssignContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAsignacion(MiGramaticaParser.AsignacionContext ctx) { }
+	@Override public void exitAssign(MiGramaticaParser.AssignContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

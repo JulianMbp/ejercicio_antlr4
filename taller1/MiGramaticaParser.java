@@ -123,7 +123,7 @@ public class MiGramaticaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(20); 
+			setState(19); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
@@ -131,23 +131,15 @@ public class MiGramaticaParser extends Parser {
 				{
 				setState(16);
 				sentencia();
-				setState(18);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				if (_la==T__0) {
-					{
-					setState(17);
-					match(T__0);
-					}
-				}
-
+				setState(17);
+				match(T__0);
 				}
 				}
-				setState(22); 
+				setState(21); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==T__1 || _la==ID );
-			setState(24);
+			setState(23);
 			match(EOF);
 			}
 		}
@@ -187,20 +179,20 @@ public class MiGramaticaParser extends Parser {
 		SentenciaContext _localctx = new SentenciaContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_sentencia);
 		try {
-			setState(28);
+			setState(27);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(26);
+				setState(25);
 				forStmt();
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(27);
+				setState(26);
 				asignacion();
 				}
 				break;
@@ -265,49 +257,49 @@ public class MiGramaticaParser extends Parser {
 			_localctx = new ForLoopContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(30);
+			setState(29);
 			match(T__1);
-			setState(31);
+			setState(30);
 			match(T__2);
-			setState(32);
+			setState(31);
 			inicializacion();
+			setState(32);
+			match(T__0);
 			setState(33);
-			match(T__0);
-			setState(34);
 			condicion();
-			setState(35);
+			setState(34);
 			match(T__0);
-			setState(36);
+			setState(35);
 			actualizacion();
-			setState(37);
+			setState(36);
 			match(T__3);
-			setState(38);
+			setState(37);
 			match(T__4);
-			setState(45);
+			setState(44);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__1 || _la==ID) {
 				{
 				{
-				setState(39);
+				setState(38);
 				sentencia();
-				setState(41);
+				setState(40);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==T__0) {
 					{
-					setState(40);
+					setState(39);
 					match(T__0);
 					}
 				}
 
 				}
 				}
-				setState(47);
+				setState(46);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(48);
+			setState(47);
 			match(T__5);
 			}
 		}
@@ -347,11 +339,11 @@ public class MiGramaticaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(50);
+			setState(49);
 			match(ID);
-			setState(51);
+			setState(50);
 			match(T__6);
-			setState(52);
+			setState(51);
 			expresion(0);
 			}
 		}
@@ -391,9 +383,9 @@ public class MiGramaticaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(54);
+			setState(53);
 			match(ID);
-			setState(55);
+			setState(54);
 			((CondicionContext)_localctx).op = _input.LT(1);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__10))) != 0)) ) {
@@ -404,7 +396,7 @@ public class MiGramaticaParser extends Parser {
 				_errHandler.reportMatch(this);
 				consume();
 			}
-			setState(56);
+			setState(55);
 			match(INT);
 			}
 		}
@@ -444,11 +436,11 @@ public class MiGramaticaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(58);
+			setState(57);
 			match(ID);
-			setState(59);
+			setState(58);
 			match(T__6);
-			setState(60);
+			setState(59);
 			expresion(0);
 			}
 		}
@@ -464,21 +456,29 @@ public class MiGramaticaParser extends Parser {
 	}
 
 	public static class AsignacionContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(MiGramaticaParser.ID, 0); }
-		public ExpresionContext expresion() {
-			return getRuleContext(ExpresionContext.class,0);
-		}
 		public AsignacionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_asignacion; }
+	 
+		public AsignacionContext() { }
+		public void copyFrom(AsignacionContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class AssignContext extends AsignacionContext {
+		public TerminalNode ID() { return getToken(MiGramaticaParser.ID, 0); }
+		public ExpresionContext expresion() {
+			return getRuleContext(ExpresionContext.class,0);
+		}
+		public AssignContext(AsignacionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof MiGramaticaListener ) ((MiGramaticaListener)listener).enterAsignacion(this);
+			if ( listener instanceof MiGramaticaListener ) ((MiGramaticaListener)listener).enterAssign(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof MiGramaticaListener ) ((MiGramaticaListener)listener).exitAsignacion(this);
+			if ( listener instanceof MiGramaticaListener ) ((MiGramaticaListener)listener).exitAssign(this);
 		}
 	}
 
@@ -486,15 +486,16 @@ public class MiGramaticaParser extends Parser {
 		AsignacionContext _localctx = new AsignacionContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_asignacion);
 		try {
+			_localctx = new AssignContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(62);
+			setState(61);
 			match(ID);
-			setState(63);
+			setState(62);
 			match(T__6);
-			setState(64);
+			setState(63);
 			expresion(0);
-			setState(65);
+			setState(64);
 			match(T__0);
 			}
 		}
@@ -611,7 +612,7 @@ public class MiGramaticaParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(74);
+			setState(73);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case INT:
@@ -620,7 +621,7 @@ public class MiGramaticaParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(68);
+				setState(67);
 				match(INT);
 				}
 				break;
@@ -629,7 +630,7 @@ public class MiGramaticaParser extends Parser {
 				_localctx = new VariableContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(69);
+				setState(68);
 				match(ID);
 				}
 				break;
@@ -638,11 +639,11 @@ public class MiGramaticaParser extends Parser {
 				_localctx = new ParensContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(70);
+				setState(69);
 				match(T__2);
-				setState(71);
+				setState(70);
 				expresion(0);
-				setState(72);
+				setState(71);
 				match(T__3);
 				}
 				break;
@@ -650,24 +651,24 @@ public class MiGramaticaParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(84);
+			setState(83);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(82);
+					setState(81);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 					case 1:
 						{
 						_localctx = new MulDivContext(new ExpresionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expresion);
-						setState(76);
+						setState(75);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(77);
+						setState(76);
 						((MulDivContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==T__11 || _la==T__12) ) {
@@ -678,7 +679,7 @@ public class MiGramaticaParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(78);
+						setState(77);
 						expresion(6);
 						}
 						break;
@@ -686,9 +687,9 @@ public class MiGramaticaParser extends Parser {
 						{
 						_localctx = new AddSubContext(new ExpresionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expresion);
-						setState(79);
+						setState(78);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(80);
+						setState(79);
 						((AddSubContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==T__13 || _la==T__14) ) {
@@ -699,16 +700,16 @@ public class MiGramaticaParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(81);
+						setState(80);
 						expresion(5);
 						}
 						break;
 					}
 					} 
 				}
-				setState(86);
+				setState(85);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			}
 			}
 		}
@@ -741,28 +742,28 @@ public class MiGramaticaParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\24Z\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\3\2\5\2\25\n\2"+
-		"\6\2\27\n\2\r\2\16\2\30\3\2\3\2\3\3\3\3\5\3\37\n\3\3\4\3\4\3\4\3\4\3\4"+
-		"\3\4\3\4\3\4\3\4\3\4\3\4\5\4,\n\4\7\4.\n\4\f\4\16\4\61\13\4\3\4\3\4\3"+
-		"\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\t"+
-		"\3\t\3\t\3\t\3\t\3\t\3\t\5\tM\n\t\3\t\3\t\3\t\3\t\3\t\3\t\7\tU\n\t\f\t"+
-		"\16\tX\13\t\3\t\2\3\20\n\2\4\6\b\n\f\16\20\2\5\3\2\n\r\3\2\16\17\3\2\20"+
-		"\21\2Z\2\26\3\2\2\2\4\36\3\2\2\2\6 \3\2\2\2\b\64\3\2\2\2\n8\3\2\2\2\f"+
-		"<\3\2\2\2\16@\3\2\2\2\20L\3\2\2\2\22\24\5\4\3\2\23\25\7\3\2\2\24\23\3"+
-		"\2\2\2\24\25\3\2\2\2\25\27\3\2\2\2\26\22\3\2\2\2\27\30\3\2\2\2\30\26\3"+
-		"\2\2\2\30\31\3\2\2\2\31\32\3\2\2\2\32\33\7\2\2\3\33\3\3\2\2\2\34\37\5"+
-		"\6\4\2\35\37\5\16\b\2\36\34\3\2\2\2\36\35\3\2\2\2\37\5\3\2\2\2 !\7\4\2"+
-		"\2!\"\7\5\2\2\"#\5\b\5\2#$\7\3\2\2$%\5\n\6\2%&\7\3\2\2&\'\5\f\7\2\'(\7"+
-		"\6\2\2(/\7\7\2\2)+\5\4\3\2*,\7\3\2\2+*\3\2\2\2+,\3\2\2\2,.\3\2\2\2-)\3"+
-		"\2\2\2.\61\3\2\2\2/-\3\2\2\2/\60\3\2\2\2\60\62\3\2\2\2\61/\3\2\2\2\62"+
-		"\63\7\b\2\2\63\7\3\2\2\2\64\65\7\22\2\2\65\66\7\t\2\2\66\67\5\20\t\2\67"+
-		"\t\3\2\2\289\7\22\2\29:\t\2\2\2:;\7\23\2\2;\13\3\2\2\2<=\7\22\2\2=>\7"+
-		"\t\2\2>?\5\20\t\2?\r\3\2\2\2@A\7\22\2\2AB\7\t\2\2BC\5\20\t\2CD\7\3\2\2"+
-		"D\17\3\2\2\2EF\b\t\1\2FM\7\23\2\2GM\7\22\2\2HI\7\5\2\2IJ\5\20\t\2JK\7"+
-		"\6\2\2KM\3\2\2\2LE\3\2\2\2LG\3\2\2\2LH\3\2\2\2MV\3\2\2\2NO\f\7\2\2OP\t"+
-		"\3\2\2PU\5\20\t\bQR\f\6\2\2RS\t\4\2\2SU\5\20\t\7TN\3\2\2\2TQ\3\2\2\2U"+
-		"X\3\2\2\2VT\3\2\2\2VW\3\2\2\2W\21\3\2\2\2XV\3\2\2\2\n\24\30\36+/LTV";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\24Y\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\3\2\3\2\6\2\26"+
+		"\n\2\r\2\16\2\27\3\2\3\2\3\3\3\3\5\3\36\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3"+
+		"\4\3\4\3\4\3\4\3\4\5\4+\n\4\7\4-\n\4\f\4\16\4\60\13\4\3\4\3\4\3\5\3\5"+
+		"\3\5\3\5\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\t\3\t\3"+
+		"\t\3\t\3\t\3\t\3\t\5\tL\n\t\3\t\3\t\3\t\3\t\3\t\3\t\7\tT\n\t\f\t\16\t"+
+		"W\13\t\3\t\2\3\20\n\2\4\6\b\n\f\16\20\2\5\3\2\n\r\3\2\16\17\3\2\20\21"+
+		"\2X\2\25\3\2\2\2\4\35\3\2\2\2\6\37\3\2\2\2\b\63\3\2\2\2\n\67\3\2\2\2\f"+
+		";\3\2\2\2\16?\3\2\2\2\20K\3\2\2\2\22\23\5\4\3\2\23\24\7\3\2\2\24\26\3"+
+		"\2\2\2\25\22\3\2\2\2\26\27\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2\30\31\3"+
+		"\2\2\2\31\32\7\2\2\3\32\3\3\2\2\2\33\36\5\6\4\2\34\36\5\16\b\2\35\33\3"+
+		"\2\2\2\35\34\3\2\2\2\36\5\3\2\2\2\37 \7\4\2\2 !\7\5\2\2!\"\5\b\5\2\"#"+
+		"\7\3\2\2#$\5\n\6\2$%\7\3\2\2%&\5\f\7\2&\'\7\6\2\2\'.\7\7\2\2(*\5\4\3\2"+
+		")+\7\3\2\2*)\3\2\2\2*+\3\2\2\2+-\3\2\2\2,(\3\2\2\2-\60\3\2\2\2.,\3\2\2"+
+		"\2./\3\2\2\2/\61\3\2\2\2\60.\3\2\2\2\61\62\7\b\2\2\62\7\3\2\2\2\63\64"+
+		"\7\22\2\2\64\65\7\t\2\2\65\66\5\20\t\2\66\t\3\2\2\2\678\7\22\2\289\t\2"+
+		"\2\29:\7\23\2\2:\13\3\2\2\2;<\7\22\2\2<=\7\t\2\2=>\5\20\t\2>\r\3\2\2\2"+
+		"?@\7\22\2\2@A\7\t\2\2AB\5\20\t\2BC\7\3\2\2C\17\3\2\2\2DE\b\t\1\2EL\7\23"+
+		"\2\2FL\7\22\2\2GH\7\5\2\2HI\5\20\t\2IJ\7\6\2\2JL\3\2\2\2KD\3\2\2\2KF\3"+
+		"\2\2\2KG\3\2\2\2LU\3\2\2\2MN\f\7\2\2NO\t\3\2\2OT\5\20\t\bPQ\f\6\2\2QR"+
+		"\t\4\2\2RT\5\20\t\7SM\3\2\2\2SP\3\2\2\2TW\3\2\2\2US\3\2\2\2UV\3\2\2\2"+
+		"V\21\3\2\2\2WU\3\2\2\2\t\27\35*.KSU";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
