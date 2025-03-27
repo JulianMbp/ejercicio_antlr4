@@ -1,44 +1,34 @@
 grammar MiGramatica;
 
-// Regla principal: múltiples sentencias
-programa: (sentencia ';')+ EOF ;
+programa : sentencia+ EOF ;
 
-// Sentencias posibles
-sentencia
-    : forStmt
-    | asignacion
-    ;
+sentencia : forLoop ';'
+          | asignacion ';'
+          | sentencia sentencia
+          ;
 
-// Regla para `for`
-forStmt
-    : 'for' '(' inicializacion ';' condicion ';' actualizacion ')' '{' (sentencia (';')?)* '}' # ForLoop
-    ;
-// Inicialización del `for` (Ej: i = 0)
-inicializacion
-    : ID '=' expresion
-    ;
-// Condición dentro del `for` (Ej: i < 10)
-condicion
-    : ID op=('>' | '<' | '==' | '!=') INT
-    ;
-// Actualización del `for` (Ej: i = i + 1)
-actualizacion
-    : ID '=' expresion
-    ;
-// Asignaciones generales con `;`
-asignacion
-    : ID '=' expresion ';' # Assign
-    ;
+forLoop : 'for' '(' inicializacion ';' condicion ';' actualizacion ')' '{' sentencia* '}' ;
 
-// Expresiones matemáticas
-expresion
-    : expresion op=('*'|'/') expresion   # MulDiv
-    | expresion op=('+'|'-') expresion   # AddSub
-    | INT                                # Int
-    | ID                                 # Variable
-    | '(' expresion ')'                  # Parens
-    ;
-// Reglas léxicas
-ID  : [a-zA-Z_][a-zA-Z_0-9]* ;  // Identificadores
-INT : [0-9]+ ;                  // Números enteros
-WS  : [ \t\r\n]+ -> skip ;      // Espacios en blanco ignorados
+inicializacion : ID '=' expresion ;
+
+condicion : ID operadorComparacion expresion ;
+
+actualizacion : ID operadorAsignacion expresion ;
+
+asignacion : ID '=' expresion ;
+
+expresion : expresion ('*' | '/') expresion #MulDiv
+          | expresion ('+' | '-') expresion #AddSub
+          | INT                            #Int
+          | ID                             #Variable
+          | '(' expresion ')'              #Parens
+          ;
+
+operadorComparacion : '<' | '>' | '==' | '!=' | '<=' | '>=' ;
+
+operadorAsignacion : '=' | '+=' | '-=' | '*=' | '/=' ;
+
+ID : [a-zA-Z][a-zA-Z0-9]* ;
+INT : [0-9]+ ;
+WS : [ \t\r\n]+ -> skip ;
+COMENTARIO : '//' .*? '\n' -> skip ; 

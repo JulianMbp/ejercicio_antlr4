@@ -1,6 +1,6 @@
-# Generated from MiGramatica.g4 by ANTLR 4.9.3
+# Generated from MiGramatica.g4 by ANTLR 4.13.2
 from antlr4 import *
-if __name__ is not None and "." in __name__:
+if "." in __name__:
     from .MiGramaticaParser import MiGramaticaParser
 else:
     from MiGramaticaParser import MiGramaticaParser
@@ -19,7 +19,7 @@ class MiGramaticaVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MiGramaticaParser#ForLoop.
+    # Visit a parse tree produced by MiGramaticaParser#forLoop.
     def visitForLoop(self, ctx:MiGramaticaParser.ForLoopContext):
         return self.visitChildren(ctx)
 
@@ -39,8 +39,8 @@ class MiGramaticaVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MiGramaticaParser#Assign.
-    def visitAssign(self, ctx:MiGramaticaParser.AssignContext):
+    # Visit a parse tree produced by MiGramaticaParser#asignacion.
+    def visitAsignacion(self, ctx:MiGramaticaParser.AsignacionContext):
         return self.visitChildren(ctx)
 
 
@@ -66,6 +66,16 @@ class MiGramaticaVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by MiGramaticaParser#Int.
     def visitInt(self, ctx:MiGramaticaParser.IntContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MiGramaticaParser#operadorComparacion.
+    def visitOperadorComparacion(self, ctx:MiGramaticaParser.OperadorComparacionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MiGramaticaParser#operadorAsignacion.
+    def visitOperadorAsignacion(self, ctx:MiGramaticaParser.OperadorAsignacionContext):
         return self.visitChildren(ctx)
 
 

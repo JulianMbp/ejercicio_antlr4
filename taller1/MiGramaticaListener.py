@@ -26,11 +26,11 @@ class MiGramaticaListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MiGramaticaParser#ForLoop.
+    # Enter a parse tree produced by MiGramaticaParser#forLoop.
     def enterForLoop(self, ctx:MiGramaticaParser.ForLoopContext):
         pass
 
-    # Exit a parse tree produced by MiGramaticaParser#ForLoop.
+    # Exit a parse tree produced by MiGramaticaParser#forLoop.
     def exitForLoop(self, ctx:MiGramaticaParser.ForLoopContext):
         pass
 
@@ -113,6 +113,24 @@ class MiGramaticaListener(ParseTreeListener):
 
     # Exit a parse tree produced by MiGramaticaParser#Int.
     def exitInt(self, ctx:MiGramaticaParser.IntContext):
+        pass
+
+
+    # Enter a parse tree produced by MiGramaticaParser#operadorComparacion.
+    def enterOperadorComparacion(self, ctx:MiGramaticaParser.OperadorComparacionContext):
+        pass
+
+    # Exit a parse tree produced by MiGramaticaParser#operadorComparacion.
+    def exitOperadorComparacion(self, ctx:MiGramaticaParser.OperadorComparacionContext):
+        pass
+
+
+    # Enter a parse tree produced by MiGramaticaParser#operadorAsignacion.
+    def enterOperadorAsignacion(self, ctx:MiGramaticaParser.OperadorAsignacionContext):
+        pass
+
+    # Exit a parse tree produced by MiGramaticaParser#operadorAsignacion.
+    def exitOperadorAsignacion(self, ctx:MiGramaticaParser.OperadorAsignacionContext):
         pass
 
 

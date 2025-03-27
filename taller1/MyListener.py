@@ -1,23 +1,27 @@
 from MiGramaticaListener import MiGramaticaListener
 
 class MyListener(MiGramaticaListener):
-    def exitIfElse(self, ctx):
-        print("🔍 Se detectó un bloque IF-ELSE")
-
-    def exitAssign(self, ctx):
-        print("✍️ Asignación detectada:", ctx.getText())
-
-    def exitCondicionSimple(self, ctx):
-        print("⚠️ Condición con variable:", ctx.ID().getText(), ctx.op.text, ctx.INT().getText())
-        
     def exitForLoop(self, ctx):
-        print("🔄 Se detectó un bucle FOR:", ctx.getText())
+        print(f"Detectado bucle for: {ctx.getText()}")
         
     def exitInicializacion(self, ctx):
-        print("🏁 Inicialización detectada:", ctx.getText())
+        var = ctx.ID().getText()
+        expr = ctx.expresion().getText()
+        print(f"Inicialización detectada: {var} = {expr}")
         
     def exitCondicion(self, ctx):
-        print("🔍 Condición detectada:", ctx.getText())
+        var = ctx.ID().getText()
+        op = ctx.operadorComparacion().getText()
+        expr = ctx.expresion().getText()
+        print(f"Condición detectada: {var} {op} {expr}")
         
     def exitActualizacion(self, ctx):
-        print("⏫ Actualización detectada:", ctx.getText())
+        var = ctx.ID().getText()
+        op = ctx.operadorAsignacion().getText()
+        expr = ctx.expresion().getText()
+        print(f"Actualización detectada: {var} {op} {expr}")
+        
+    def exitAsignacion(self, ctx):
+        var = ctx.ID().getText()
+        expr = ctx.expresion().getText()
+        print(f"Asignación detectada: {var} = {expr}") 
