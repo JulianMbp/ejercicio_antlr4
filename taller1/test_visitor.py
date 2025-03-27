@@ -37,4 +37,4 @@ def main():
         print(f"{var} = {valor}")
 
 if __name__ == '__main__':
-    main() 
+    main()

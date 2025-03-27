@@ -146,6 +146,12 @@ class MiGramaticaParser ( Parser ):
             if hasattr( listener, "exitPrograma" ):
                 listener.exitPrograma(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPrograma" ):
+                return visitor.visitPrograma(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -211,6 +217,12 @@ class MiGramaticaParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitSentencia" ):
                 listener.exitSentencia(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSentencia" ):
+                return visitor.visitSentencia(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -308,6 +320,12 @@ class MiGramaticaParser ( Parser ):
             if hasattr( listener, "exitForLoop" ):
                 listener.exitForLoop(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitForLoop" ):
+                return visitor.visitForLoop(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -382,6 +400,12 @@ class MiGramaticaParser ( Parser ):
             if hasattr( listener, "exitInicializacion" ):
                 listener.exitInicializacion(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInicializacion" ):
+                return visitor.visitInicializacion(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -434,6 +458,12 @@ class MiGramaticaParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitCondicion" ):
                 listener.exitCondicion(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitCondicion" ):
+                return visitor.visitCondicion(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -488,6 +518,12 @@ class MiGramaticaParser ( Parser ):
             if hasattr( listener, "exitActualizacion" ):
                 listener.exitActualizacion(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitActualizacion" ):
+                return visitor.visitActualizacion(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -536,6 +572,12 @@ class MiGramaticaParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitAsignacion" ):
                 listener.exitAsignacion(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAsignacion" ):
+                return visitor.visitAsignacion(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -594,6 +636,12 @@ class MiGramaticaParser ( Parser ):
             if hasattr( listener, "exitVariable" ):
                 listener.exitVariable(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitVariable" ):
+                return visitor.visitVariable(self)
+            else:
+                return visitor.visitChildren(self)
+
 
     class MulDivContext(ExpresionContext):
 
@@ -615,6 +663,12 @@ class MiGramaticaParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitMulDiv" ):
                 listener.exitMulDiv(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitMulDiv" ):
+                return visitor.visitMulDiv(self)
+            else:
+                return visitor.visitChildren(self)
 
 
     class AddSubContext(ExpresionContext):
@@ -638,6 +692,12 @@ class MiGramaticaParser ( Parser ):
             if hasattr( listener, "exitAddSub" ):
                 listener.exitAddSub(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAddSub" ):
+                return visitor.visitAddSub(self)
+            else:
+                return visitor.visitChildren(self)
+
 
     class ParensContext(ExpresionContext):
 
@@ -657,6 +717,12 @@ class MiGramaticaParser ( Parser ):
             if hasattr( listener, "exitParens" ):
                 listener.exitParens(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitParens" ):
+                return visitor.visitParens(self)
+            else:
+                return visitor.visitChildren(self)
+
 
     class IntContext(ExpresionContext):
 
@@ -674,6 +740,12 @@ class MiGramaticaParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitInt" ):
                 listener.exitInt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInt" ):
+                return visitor.visitInt(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -800,6 +872,12 @@ class MiGramaticaParser ( Parser ):
             if hasattr( listener, "exitOperadorComparacion" ):
                 listener.exitOperadorComparacion(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitOperadorComparacion" ):
+                return visitor.visitOperadorComparacion(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -844,6 +922,12 @@ class MiGramaticaParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitOperadorAsignacion" ):
                 listener.exitOperadorAsignacion(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitOperadorAsignacion" ):
+                return visitor.visitOperadorAsignacion(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 

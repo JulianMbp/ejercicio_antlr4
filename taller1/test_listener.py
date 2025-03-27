@@ -35,4 +35,4 @@ def main():
     walker.walk(listener, tree)
 
 if __name__ == '__main__':
-    main() 
+    main()

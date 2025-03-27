@@ -31,4 +31,4 @@ operadorAsignacion : '=' | '+=' | '-=' | '*=' | '/=' ;
 ID : [a-zA-Z][a-zA-Z0-9]* ;
 INT : [0-9]+ ;
 WS : [ \t\r\n]+ -> skip ;
-COMENTARIO : '//' .*? '\n' -> skip ; 
+COMENTARIO : '//' .*? '\n' -> skip ;

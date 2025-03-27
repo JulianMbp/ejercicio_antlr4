@@ -6,10 +6,9 @@ class EvalVisitor(MiGramaticaVisitor):
         self.variables = {}
         
     def visitPrograma(self, ctx):
-        result = None
         for i in range(ctx.getChildCount() - 1):  # -1 para ignorar EOF
             if isinstance(ctx.getChild(i), MiGramaticaParser.SentenciaContext):
-                result = self.visit(ctx.getChild(i))
+                self.visit(ctx.getChild(i))
         return self.variables
     
     def visitSentencia(self, ctx):
@@ -136,4 +135,4 @@ class EvalVisitor(MiGramaticaVisitor):
         return self.variables[var]
     
     def visitParens(self, ctx):
-        return self.visit(ctx.expresion()) 
+        return self.visit(ctx.expresion())

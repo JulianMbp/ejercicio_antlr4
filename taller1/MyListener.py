@@ -24,4 +24,4 @@ class MyListener(MiGramaticaListener):
     def exitAsignacion(self, ctx):
         var = ctx.ID().getText()
         expr = ctx.expresion().getText()
-        print(f"Asignación detectada: {var} = {expr}") 
+        print(f"Asignación detectada: {var} = {expr}")
