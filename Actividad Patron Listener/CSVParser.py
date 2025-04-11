@@ -1,4 +1,4 @@
-# Generated from CSV.g4 by ANTLR 4.9.3
+# Generated from CSV.g4 by ANTLR 4.13.1
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -8,25 +8,20 @@ if sys.version_info[1] > 5:
 else:
 	from typing.io import TextIO
 
-
 def serializedATN():
-    with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\b")
-        buf.write("%\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\3\2\3\2\6\2\r\n\2\r")
-        buf.write("\2\16\2\16\3\3\3\3\3\4\3\4\3\4\7\4\26\n\4\f\4\16\4\31")
-        buf.write("\13\4\3\4\5\4\34\n\4\3\4\3\4\3\5\3\5\3\5\5\5#\n\5\3\5")
-        buf.write("\2\2\6\2\4\6\b\2\2\2%\2\n\3\2\2\2\4\20\3\2\2\2\6\22\3")
-        buf.write("\2\2\2\b\"\3\2\2\2\n\f\5\4\3\2\13\r\5\6\4\2\f\13\3\2\2")
-        buf.write("\2\r\16\3\2\2\2\16\f\3\2\2\2\16\17\3\2\2\2\17\3\3\2\2")
-        buf.write("\2\20\21\5\6\4\2\21\5\3\2\2\2\22\27\5\b\5\2\23\24\7\3")
-        buf.write("\2\2\24\26\5\b\5\2\25\23\3\2\2\2\26\31\3\2\2\2\27\25\3")
-        buf.write("\2\2\2\27\30\3\2\2\2\30\33\3\2\2\2\31\27\3\2\2\2\32\34")
-        buf.write("\7\4\2\2\33\32\3\2\2\2\33\34\3\2\2\2\34\35\3\2\2\2\35")
-        buf.write("\36\7\5\2\2\36\7\3\2\2\2\37#\7\6\2\2 #\7\7\2\2!#\3\2\2")
-        buf.write("\2\"\37\3\2\2\2\" \3\2\2\2\"!\3\2\2\2#\t\3\2\2\2\6\16")
-        buf.write("\27\33\"")
-        return buf.getvalue()
-
+    return [
+        4,1,6,35,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,1,0,1,0,4,0,11,8,0,11,0,
+        12,0,12,1,1,1,1,1,2,1,2,1,2,5,2,20,8,2,10,2,12,2,23,9,2,1,2,3,2,
+        26,8,2,1,2,1,2,1,3,1,3,1,3,3,3,33,8,3,1,3,0,0,4,0,2,4,6,0,0,35,0,
+        8,1,0,0,0,2,14,1,0,0,0,4,16,1,0,0,0,6,32,1,0,0,0,8,10,3,2,1,0,9,
+        11,3,4,2,0,10,9,1,0,0,0,11,12,1,0,0,0,12,10,1,0,0,0,12,13,1,0,0,
+        0,13,1,1,0,0,0,14,15,3,4,2,0,15,3,1,0,0,0,16,21,3,6,3,0,17,18,5,
+        1,0,0,18,20,3,6,3,0,19,17,1,0,0,0,20,23,1,0,0,0,21,19,1,0,0,0,21,
+        22,1,0,0,0,22,25,1,0,0,0,23,21,1,0,0,0,24,26,5,2,0,0,25,24,1,0,0,
+        0,25,26,1,0,0,0,26,27,1,0,0,0,27,28,5,3,0,0,28,5,1,0,0,0,29,33,5,
+        4,0,0,30,33,5,5,0,0,31,33,1,0,0,0,32,29,1,0,0,0,32,30,1,0,0,0,32,
+        31,1,0,0,0,33,7,1,0,0,0,4,12,21,25,32
+    ]
 
 class CSVParser ( Parser ):
 
@@ -38,7 +33,7 @@ class CSVParser ( Parser ):
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "','", "'\r'", "'\n'" ]
+    literalNames = [ "<INVALID>", "','", "'\\r'", "'\\n'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "TEXT", "STRING", "WS" ]
@@ -60,7 +55,7 @@ class CSVParser ( Parser ):
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
-        self.checkVersion("4.9.3")
+        self.checkVersion("4.13.1")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -117,7 +112,7 @@ class CSVParser ( Parser ):
                 self.state = 12 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << CSVParser.T__0) | (1 << CSVParser.T__1) | (1 << CSVParser.T__2) | (1 << CSVParser.TEXT) | (1 << CSVParser.STRING))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 62) != 0)):
                     break
 
         except RecognitionException as re:
@@ -211,7 +206,7 @@ class CSVParser ( Parser ):
             self.state = 21
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==CSVParser.T__0:
+            while _la==1:
                 self.state = 17
                 self.match(CSVParser.T__0)
                 self.state = 18
@@ -223,7 +218,7 @@ class CSVParser ( Parser ):
             self.state = 25
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==CSVParser.T__1:
+            if _la==2:
                 self.state = 24
                 self.match(CSVParser.T__1)
 
@@ -317,19 +312,19 @@ class CSVParser ( Parser ):
             self.state = 32
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [CSVParser.TEXT]:
+            if token in [4]:
                 localctx = CSVParser.TextContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 29
                 self.match(CSVParser.TEXT)
                 pass
-            elif token in [CSVParser.STRING]:
+            elif token in [5]:
                 localctx = CSVParser.StringContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 30
                 self.match(CSVParser.STRING)
                 pass
-            elif token in [CSVParser.T__0, CSVParser.T__1, CSVParser.T__2]:
+            elif token in [1, 2, 3]:
                 localctx = CSVParser.EmptyContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
 

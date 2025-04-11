@@ -1,0 +1,22 @@
+[
+  {
+    "Fecha": "2023-06-01",
+    "Cantidad": "1200.00",
+    "Descripción": "Pago de servicio"
+  },
+  {
+    "Fecha": "2023-06-02",
+    "Cantidad": "1200.00",
+    "Descripción": "Pago de servicio"
+  },
+  {
+    "Fecha": "2023-07-01",
+    "Cantidad": "900.00",
+    "Descripción": "Mantenimiento"
+  },
+  {
+    "Fecha": "2023-07-01",
+    "Cantidad": "",
+    "Descripción": "Vacío"
+  }
+]

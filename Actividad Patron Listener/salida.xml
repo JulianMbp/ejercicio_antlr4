@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<objeto>
+  <descripcion>Archivo de configuración del servidor</descripcion>
+  <logs></logs>
+  <host>antlr.org</host>
+  <admin></admin>
+  <alias></alias>
+</objeto>
+</root>
