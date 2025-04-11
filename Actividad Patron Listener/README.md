@@ -3,7 +3,7 @@
 ## 👨‍💻 Desarrollador
 - Julian M. Bastidas Perez
 
-## 📚 Descripción General
+## 📚 Descripción
 
 Este proyecto implementa un sistema para el procesamiento de datos en formato **CSV** y **JSON**, con capacidades de limpieza, validación, análisis y transformación de datos. La solución utiliza **ANTLR 4** para la definición de gramáticas y **Python** para la implementación de la lógica de negocio.
 
