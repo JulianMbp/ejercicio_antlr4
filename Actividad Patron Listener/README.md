@@ -9,23 +9,6 @@ Este proyecto implementa un sistema para el procesamiento de datos en formato **
 
 ---
 
-## 📋 Actividades Implementadas
-
-| Tarea                                                               | Estado |
-|---------------------------------------------------------------------|--------|
-| Exportar JSON a XML jerárquico y legible con indentación           | ✅     |
-| Validar la estructura básica del JSON antes de convertirlo         | ✅     |
-| Leer y analizar archivos CSV con ANTLR                             | ✅     |
-| Limpiar montos en formato string (`$`, `,`, `""`)                  | ✅     |
-| Detectar campos vacíos o mal formateados en columna "Cantidad"     | ✅     |
-| Detectar filas duplicadas                                          | ✅     |
-| Contar cuántos campos vacíos hay en total                          | ✅     |
-| Contar cuántos registros por mes existen                           | ✅     |
-| Generar un diccionario `{"Junio": total_montos}`                   | ✅     |
-| Exportar datos limpios a JSON y CSV                                | ✅     |
-
----
-
 ## ▶️ Instrucciones para Ejecutar los Archivos
 
 ### 1. Procesamiento de CSV
