@@ -5,6 +5,3 @@ modificar gramatica para incluir expresiones aritmeticas
 agregar ejercicios dados en el link https://asigcompiladores.vercel.app/modules/reporte_errores_3.html
 crear carpeta para implementar el listener
 cambiar el main implementando el listener
-
-
-Nombres: SARA MARIA OJEDA LOPEZ Y SEBASTIAN FAJARDO DELGADO
