@@ -1,0 +1,102 @@
+{
+  "source": {
+    "file": "empleados.csv"
+  },
+  "filters": [
+    {
+      "type": "AND",
+      "conditions": [
+        {
+          "column": "edad",
+          "operator": "in_range",
+          "value": [30, 60]
+        },
+        {
+          "type": "OR",
+          "conditions": [
+            {
+              "type": "AND",
+              "conditions": [
+                {
+                  "column": "salario",
+                  "operator": "greater",
+                  "value": 5000000
+                },
+                {
+                  "column": "dias_laborados",
+                  "operator": "less",
+                  "value": 2000
+                }
+              ]
+            },
+            {
+              "type": "AND",
+              "conditions": [
+                {
+                  "column": "nombre",
+                  "operator": "contains",
+                  "value": "García"
+                },
+                {
+                  "column": "salario",
+                  "operator": "less",
+                  "value": 4000000
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "column": "calc:int({edad}) * float({salario}) / 1000000",
+      "operator": "greater",
+      "value": 200
+    },
+    {
+      "type": "OR",
+      "conditions": [
+        {
+          "column": "id",
+          "operator": "mod",
+          "value": 5
+        },
+        {
+          "column": "id",
+          "operator": "mod_equal",
+          "value": [3, 1]
+        }
+      ]
+    }
+  ],
+  "aggregations": [
+    {
+      "type": "count",
+      "column": "id"
+    },
+    {
+      "type": "average",
+      "column": "salario"
+    },
+    {
+      "type": "median",
+      "column": "edad"
+    },
+    {
+      "type": "std_dev",
+      "column": "salario"
+    },
+    {
+      "type": "max",
+      "column": "edad"
+    },
+    {
+      "type": "min",
+      "column": "dias_laborados"
+    }
+  ],
+  "output": {
+    "print": true,
+    "max_rows": 15
+  }
+} 

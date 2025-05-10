@@ -1,0 +1,87 @@
+{
+  "source": {
+    "file": "empleados.csv"
+  },
+  "filters": [
+    {
+      "type": "AND",
+      "conditions": [
+        {
+          "column": "edad",
+          "operator": "greater",
+          "value": 30
+        },
+        {
+          "column": "salario",
+          "operator": "in_range",
+          "value": [3000000, 6000000]
+        }
+      ]
+    },
+    {
+      "type": "OR",
+      "conditions": [
+        {
+          "column": "dias_laborados",
+          "operator": "mod",
+          "value": 100
+        },
+        {
+          "column": "nombre",
+          "operator": "contains",
+          "value": "García"
+        },
+        {
+          "column": "nombre",
+          "operator": "ends_with",
+          "value": "ez"
+        }
+      ]
+    },
+    {
+      "column": "calc:int({edad}) * 100",
+      "operator": "greater",
+      "value": 4000
+    },
+    {
+      "column": "nombre",
+      "operator": "length_greater",
+      "value": 15
+    },
+    {
+      "column": "id",
+      "operator": "even",
+      "value": true
+    }
+  ],
+  "aggregations": [
+    {
+      "type": "count",
+      "column": "id"
+    },
+    {
+      "type": "average",
+      "column": "salario"
+    },
+    {
+      "type": "median",
+      "column": "edad"
+    },
+    {
+      "type": "std_dev",
+      "column": "salario"
+    },
+    {
+      "type": "max",
+      "column": "dias_laborados"
+    },
+    {
+      "type": "min",
+      "column": "edad"
+    }
+  ],
+  "output": {
+    "print": true,
+    "max_rows": 10
+  }
+} 
