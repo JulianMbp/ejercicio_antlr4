@@ -39,11 +39,6 @@ class CSVFilterVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSVFilterParser#filterCondition.
-    def visitFilterCondition(self, ctx:CSVFilterParser.FilterConditionContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by CSVFilterParser#sortStat.
     def visitSortStat(self, ctx:CSVFilterParser.SortStatContext):
         return self.visitChildren(ctx)
@@ -71,11 +66,6 @@ class CSVFilterVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by CSVFilterParser#printStat.
     def visitPrintStat(self, ctx:CSVFilterParser.PrintStatContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by CSVFilterParser#aggregateType.
-    def visitAggregateType(self, ctx:CSVFilterParser.AggregateTypeContext):
         return self.visitChildren(ctx)
 
 

@@ -17,19 +17,17 @@ loadStat: 'load' STRING ';' ;
 
 filterStat
     : 'filter' 'column' STRING OPERATOR value (LOGICAL_OP filterStat)? ';' 
-    | 'filter' 'column' STRING 'between' value 'and' value ';'
-    | 'filter' 'column' STRING 'in' '(' valueList ')' ';'
-    | 'filter' 'column' STRING 'like' STRING ';'
+    | 'filter' 'column' STRING K_BETWEEN value K_AND value ';'
+    | 'filter' 'column' STRING K_IN '(' valueList ')' ';'
+    | 'filter' 'column' STRING K_LIKE STRING ';'
     ;
 
 valueList: value (',' value)* ;
 
 aggregateStat
-    : 'aggregate' aggregateType 'column' STRING ';'
-    | 'aggregate' aggregateType 'column' STRING 'where' filterCondition ';'
+    : 'aggregate' AGGR_FUNC 'column' STRING ';'
+    | 'aggregate' AGGR_FUNC 'column' STRING K_WHERE STRING OPERATOR value ';'
     ;
-
-filterCondition: STRING OPERATOR value (LOGICAL_OP filterCondition)? ;
 
 sortStat: 'sort' 'by' STRING sortOrder ';' ;
 
@@ -43,16 +41,17 @@ groupStat: 'group' 'by' STRING ';' ;
 
 printStat: 'print' ';' ;
 
-aggregateType
-    : 'count'
-    | 'sum'
-    | 'average'
-    | 'min'
-    | 'max'
-    | 'between'
-    ;
-
 value: STRING | INT | FLOAT | BOOLEAN ;
+
+// Palabras clave
+K_BETWEEN: 'between' ;
+K_AND: 'and' ;
+K_IN: 'in' ;
+K_LIKE: 'like' ;
+K_WHERE: 'where' ;
+
+// Funciones de agregación
+AGGR_FUNC: 'count' | 'sum' | 'average' | 'min' | 'max' ;
 
 BOOLEAN: 'true' | 'false' ;
 FLOAT: [0-9]+ '.' [0-9]+ ;

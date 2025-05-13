@@ -62,15 +62,6 @@ class CSVFilterListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by CSVFilterParser#filterCondition.
-    def enterFilterCondition(self, ctx:CSVFilterParser.FilterConditionContext):
-        pass
-
-    # Exit a parse tree produced by CSVFilterParser#filterCondition.
-    def exitFilterCondition(self, ctx:CSVFilterParser.FilterConditionContext):
-        pass
-
-
     # Enter a parse tree produced by CSVFilterParser#sortStat.
     def enterSortStat(self, ctx:CSVFilterParser.SortStatContext):
         pass
@@ -122,15 +113,6 @@ class CSVFilterListener(ParseTreeListener):
 
     # Exit a parse tree produced by CSVFilterParser#printStat.
     def exitPrintStat(self, ctx:CSVFilterParser.PrintStatContext):
-        pass
-
-
-    # Enter a parse tree produced by CSVFilterParser#aggregateType.
-    def enterAggregateType(self, ctx:CSVFilterParser.AggregateTypeContext):
-        pass
-
-    # Exit a parse tree produced by CSVFilterParser#aggregateType.
-    def exitAggregateType(self, ctx:CSVFilterParser.AggregateTypeContext):
         pass
 
 
