@@ -1,204 +1,155 @@
-# Mini-Compilador DSL para Consultas de Eventos Culturales
+# Procesador de Consultas CSV con ANTLR4
 
-Este proyecto implementa un mini-compilador basado en DSL (Domain Specific Language) que permite realizar consultas dinámicas sobre un archivo CSV de eventos culturales, mediante instrucciones secuenciales tipo comando.
+Este proyecto implementa un mini compilador DSL (Domain Specific Language) para realizar consultas sobre archivos CSV utilizando la herramienta ANTLR4 para el análisis léxico y sintáctico.
 
 ## Estructura del Proyecto
 
-- `CSVFilter.g4`: Gramática ANTLR4 que define el DSL
-- `main.py`: Punto de entrada del programa con menú interactivo
-- `MyCSVVisitor.py`: Implementación del visitante que procesa las instrucciones DSL
-- `CustomErrorListener.py`: Manejador de errores personalizado
-- `consultas.json`: Archivo con 40 consultas predefinidas
-- `eventos.csv`: Archivo CSV con datos de eventos culturales
-
-## Estructura del CSV
-
-El archivo CSV incluye los siguientes campos:
-- id_evento
-- nombre_evento
-- tipo_evento
-- fecha
-- lugar
-- organizador
-- costo_entrada
-- cantidad_asistentes
-- patrocinadores
-- estado_evento
-
-## Menú Interactivo
-
-El programa cuenta con un menú interactivo que permite:
-1. Ejecutar todas las consultas predefinidas
-2. Seleccionar una consulta predefinida específica
-3. Ejecutar un archivo DSL personalizado
-4. Ejecutar un archivo JSON personalizado
-
-## Instrucciones del DSL
-
-El DSL soporta las siguientes instrucciones:
-
-### 1. Cargar datos desde un archivo CSV
-```
-load "eventos.csv";
-```
-
-### 2. Aplicar filtros sobre campos
-
-#### Filtros básicos
-```
-filter column "campo" operador valor;
-```
-
-Operadores soportados: `>=`, `<=`, `>`, `<`, `==`, `!=`, `contains`
-
-#### Filtros BETWEEN
-```
-filter column "campo" between valor1 and valor2;
-```
-
-#### Filtros IN
-```
-filter column "campo" in (valor1, valor2, valor3);
-```
-
-#### Filtros LIKE (búsqueda por patrón)
-```
-filter column "campo" like "patrón";
-```
-Donde % representa cualquier secuencia de caracteres y _ representa un solo carácter.
-
-### 3. Filtros combinados con operadores lógicos
-```
-filter column "campo1" operador valor1 AND filter column "campo2" operador valor2;
-filter column "campo1" operador valor1 OR filter column "campo2" operador valor2;
-```
-
-### 4. Operaciones de agregación
-```
-aggregate count column "campo";
-aggregate sum column "campo";
-aggregate average column "campo";
-aggregate min column "campo";
-aggregate max column "campo";
-aggregate between column "campo";
-```
-
-### 5. Agregaciones con condiciones
-```
-aggregate count column "campo" where "condición_campo" operador valor;
-```
-
-### 6. Ordenar resultados
-```
-sort by "campo" asc;
-sort by "campo" desc;
-```
-
-### 7. Limitar resultados
-```
-limit 10;
-```
-
-### 8. Agrupar resultados
-```
-group by "campo";
-```
-
-### 9. Realizar JOIN entre archivos CSV
-```
-join "segundo_archivo.csv" on "clave_primaria" = "clave_secundaria";
-```
-
-### 10. Imprimir resultados
-```
-print;
-```
-
-## Formato JSON
-
-También se pueden definir consultas en formato JSON:
-
-```json
-{
-    "consultas": [
-        {
-            "id": 1,
-            "descripcion": "Descripción de la consulta",
-            "operaciones": [
-                {
-                    "tipo": "load",
-                    "archivo": "eventos.csv"
-                },
-                {
-                    "tipo": "filter",
-                    "columna": "costo_entrada",
-                    "operador": ">",
-                    "valor": 100000
-                },
-                {
-                    "tipo": "aggregate",
-                    "funcion": "count",
-                    "columna": "id_evento"
-                },
-                {
-                    "tipo": "print"
-                }
-            ]
-        }
-    ]
-}
-```
-
-También se pueden incluir instrucciones DSL directamente en el JSON:
-
-```json
-{
-    "consultas": [
-        {
-            "id": 1,
-            "descripcion": "Descripción de la consulta",
-            "operaciones": [
-                {
-                    "tipo": "load",
-                    "archivo": "eventos.csv"
-                },
-                {
-                    "instruccion": "filter column \"costo_entrada\" > 50000 AND filter column \"cantidad_asistentes\" > 3000;"
-                },
-                {
-                    "tipo": "print"
-                }
-            ]
-        }
-    ]
-}
-```
-
-## Cómo ejecutar
-
-1. Para iniciar el menú interactivo:
-   ```
-   python main.py
-   ```
-
-2. Para ejecutar directamente un script en formato JSON:
-   ```
-   python main.py archivo.json
-   ```
-
-3. Para ejecutar directamente un script en formato DSL:
-   ```
-   python main.py archivo.dsl
-   ```
-
-## Tipos de datos soportados
-
-- Enteros (sin comillas): 123, 456
-- Flotantes (con punto decimal): 123.45
-- Cadenas (entre comillas dobles): "texto"
-- Booleanos: true, false
+- `CSVFilter.g4`: Gramática ANTLR4 que define la sintaxis del DSL
+- `main.py`: Programa principal con interfaz de usuario y funcionalidades
+- `MyCSVVisitor.py`: Implementación del visitante que ejecuta las operaciones DSL
+- `eventos.csv`: Archivo de datos de ejemplo
 
 ## Requisitos
 
 - Python 3.6 o superior
-- ANTLR4 runtime para Python 
+- ANTLR4 Runtime para Python
+- Java Runtime Environment (para análisis sintáctico visual)
+
+## Uso del Programa
+
+### Ejecutar el programa principal
+
+```bash
+python main.py
+```
+
+Este comando inicia la interfaz interactiva que permite:
+- Filtrar por costo de entrada
+- Filtrar por tipo de evento
+- Filtrar por lugar
+- Ver estadísticas de eventos
+- Realizar filtros avanzados combinados
+
+### Ejecutar consultas desde un archivo DSL
+
+```bash
+# Crear un archivo DSL con la consulta
+echo 'load "eventos.csv"; filter column "tipo_evento" == "Concierto"; print;' > test.dsl
+
+# Ejecutar la consulta directamente
+python main.py test.dsl
+```
+
+### Ejecutar consultas desde un archivo JSON
+
+```bash
+python main.py consultas.json
+```
+
+## Análisis Sintáctico
+
+Para realizar análisis sintáctico de las consultas DSL, puedes usar los siguientes comandos:
+
+### Ver tokens (análisis léxico)
+
+```bash
+cat test.dsl | antlr4-parse CSVFilter.g4 prog -tokens
+```
+
+Este comando muestra cada token reconocido por el analizador léxico, incluyendo su tipo y posición.
+
+### Ver árbol sintáctico en formato texto
+
+```bash
+cat test.dsl | antlr4-parse CSVFilter.g4 prog -tree
+```
+
+Este comando muestra el árbol sintáctico en formato de texto, mostrando la estructura jerárquica de la consulta.
+
+### Visualizar árbol sintáctico con interfaz gráfica
+
+```bash
+cat test.dsl | antlr4-parse CSVFilter.g4 prog -gui
+```
+
+Este comando abre una ventana gráfica que muestra el árbol sintáctico de manera visual.
+
+## Sintaxis del DSL
+
+El DSL soporta las siguientes operaciones:
+
+### Cargar un archivo CSV
+```
+load "archivo.csv";
+```
+
+### Filtrar datos
+```
+filter column "nombre_columna" == "valor";
+filter column "costo" > 1000;
+filter column "fecha" between 2022-01-01 and 2022-12-31;
+filter column "categoria" in ("A", "B", "C");
+filter column "descripcion" like "patrón%";
+```
+
+### Agregar datos
+```
+aggregate count column "id_evento";
+aggregate sum column "costo_entrada";
+aggregate average column "cantidad_asistentes";
+aggregate min column "costo_entrada";
+aggregate max column "costo_entrada";
+```
+
+### Ordenar resultados
+```
+sort by "columna" asc;
+sort by "columna" desc;
+```
+
+### Limitar resultados
+```
+limit 10;
+```
+
+### Imprimir resultados
+```
+print;
+```
+
+## Generación de Código ANTLR4
+
+Si necesitas regenerar los archivos de parser y lexer:
+
+```bash
+# Generar archivos Java
+antlr4 CSVFilter.g4
+
+# Generar archivos Python
+antlr4 -Dlanguage=Python3 CSVFilter.g4
+```
+
+## Ejemplos de Consultas
+
+### Filtro simple
+```
+load "eventos.csv";
+filter column "tipo_evento" == "Concierto";
+print;
+```
+
+### Filtro combinado
+```
+load "eventos.csv";
+filter column "tipo_evento" == "Concierto";
+filter column "costo_entrada" > 100000;
+sort by "fecha" asc;
+print;
+```
+
+### Agregación
+```
+load "eventos.csv";
+aggregate average column "costo_entrada";
+print;
+```

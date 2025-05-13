@@ -30,106 +30,86 @@ class MyCSVVisitor(CSVFilterVisitor):
     def visitFilterStat(self, ctx):
         column = ctx.STRING(0).getText().replace('"', '')
         
-        # Filtro estándar con operador
-        if ctx.OPERATOR():
-            op = ctx.OPERATOR().getText()
-            
-            # Obtener el valor, que puede ser STRING, INT, FLOAT o BOOLEAN
-            value_ctx = ctx.value(0)
-            value = self._extract_value(value_ctx)
-                
-            filter_cond = {
-                "type": "filter",
-                "column": column,
-                "operator": op,
-                "value": value
-            }
-            
-            # Si hay un operador lógico, procesar el filtro anidado
-            if ctx.LOGICAL_OP():
-                logical_op = ctx.LOGICAL_OP().getText()
-                nested_filter = self.visit(ctx.filterStat())
-                filter_cond["logical_op"] = logical_op
-                filter_cond["nested_filter"] = nested_filter
-        
-        # Filtro BETWEEN
-        elif ctx.getChild(2).getText() == 'between':
+        # Manejar diferentes tipos de filtros
+        if ctx.K_BETWEEN():
+            # Filtro BETWEEN
+            filter_type = "between"
             value1 = self._extract_value(ctx.value(0))
             value2 = self._extract_value(ctx.value(1))
             
-            filter_cond = {
+            self.operations.append({
                 "type": "filter",
                 "filter_type": "between",
                 "column": column,
                 "value1": value1,
                 "value2": value2
-            }
-            
-        # Filtro IN
-        elif ctx.getChild(2).getText() == 'in':
+            })
+        elif ctx.K_IN():
+            # Filtro IN (lista de valores)
+            filter_type = "in"
             values = []
-            value_list = ctx.valueList()
-            for i in range(len(value_list.value())):
-                values.append(self._extract_value(value_list.value(i)))
-                
-            filter_cond = {
+            for value_ctx in ctx.value():
+                values.append(self._extract_value(value_ctx))
+            
+            self.operations.append({
                 "type": "filter",
                 "filter_type": "in",
                 "column": column,
                 "values": values
-            }
-            
-        # Filtro LIKE
-        elif ctx.getChild(2).getText() == 'like':
+            })
+        elif ctx.K_LIKE():
+            # Filtro LIKE (patrón)
+            filter_type = "like"
             pattern = ctx.STRING(1).getText().replace('"', '')
             
-            filter_cond = {
+            self.operations.append({
                 "type": "filter",
                 "filter_type": "like",
                 "column": column,
                 "pattern": pattern
-            }
+            })
+        else:
+            # Filtro estándar (operador)
+            operator = ctx.OPERATOR().getText()
+            value = self._extract_value(ctx.value(0))
             
-        self.operations.append(filter_cond)
-        return filter_cond
+            self.operations.append({
+                "type": "filter",
+                "column": column,
+                "operator": operator,
+                "value": value
+            })
+            
+        return None
 
     def visitAggregateStat(self, ctx):
-        agg_type = ctx.aggregateType().getText()
+        function = ctx.AGGR_FUNC().getText()
         column = ctx.STRING(0).getText().replace('"', '')
         
-        agg_operation = {
-            "type": "aggregate",
-            "aggregate_type": agg_type,
-            "column": column
-        }
-        
-        # Si hay una condición WHERE
-        if ctx.filterCondition():
-            filter_cond = self.visitFilterCondition(ctx.filterCondition())
-            agg_operation["filter_condition"] = filter_cond
-        
-        self.operations.append(agg_operation)
-        return None
-        
-    def visitFilterCondition(self, ctx):
-        column = ctx.STRING().getText().replace('"', '')
-        op = ctx.OPERATOR().getText()
-        value = self._extract_value(ctx.value())
-        
-        filter_cond = {
-            "column": column,
-            "operator": op,
-            "value": value
-        }
-        
-        # Si hay un operador lógico, procesar la condición anidada
-        if ctx.LOGICAL_OP():
-            logical_op = ctx.LOGICAL_OP().getText()
-            nested_cond = self.visitFilterCondition(ctx.filterCondition())
-            filter_cond["logical_op"] = logical_op
-            filter_cond["nested_condition"] = nested_cond
+        # Comprobar si hay condición WHERE
+        if ctx.K_WHERE():
+            condition_column = ctx.STRING(1).getText().replace('"', '')
+            condition_operator = ctx.OPERATOR().getText()
+            condition_value = self._extract_value(ctx.value())
             
-        return filter_cond
+            self.operations.append({
+                "type": "aggregate",
+                "aggregate_type": function,
+                "column": column,
+                "filter_condition": {
+                    "column": condition_column,
+                    "operator": condition_operator,
+                    "value": condition_value
+                }
+            })
+        else:
+            self.operations.append({
+                "type": "aggregate",
+                "aggregate_type": function,
+                "column": column
+            })
+            
+        return None
 
     def visitSortStat(self, ctx):
         column = ctx.STRING().getText().replace('"', '')
@@ -177,22 +157,40 @@ class MyCSVVisitor(CSVFilterVisitor):
         # Ejecutar las operaciones acumuladas
         self._execute_operations()
         
-        # Imprimir los resultados
+        # Guardar resultados
         if self.aggregations:
-            print("\nResultados de las agregaciones:")
             for agg_name, agg_value in self.aggregations.items():
-                print(f"{agg_name}: {agg_value}")
                 self.results.append({agg_name: agg_value})
         else:
-            print("\nRegistros filtrados:")
-            count = 0
-            for row in self.filtered_data:
-                print(row)
-                count += 1
-                self.results.append(row)
-                if count >= 20:  # Limitar a 20 registros en la impresión
-                    print(f"\n... y {len(self.filtered_data) - 20} registros más.")
-                    break
+            self.results = self.filtered_data.copy()
+        
+        # Imprimir los resultados
+        if self.aggregations:
+            print("\n" + "="*30 + " RESULTADOS DE AGREGACIONES " + "="*30)
+            for agg_name, agg_value in self.aggregations.items():
+                print(f"{agg_name}: {agg_value}")
+            print("="*80)
+        else:
+            if self.filtered_data and len(self.filtered_data) > 0:
+                headers = list(self.filtered_data[0].keys())
+                header_row = " | ".join([f"{h[:15]}" for h in headers])
+                print(header_row)
+                print("-" * len(header_row))
+                
+                # Mostrar filas
+                for row in self.filtered_data:
+                    row_values = []
+                    for h in headers:
+                        value = str(row.get(h, ""))
+                        # Truncar valores largos
+                        if len(value) > 15:
+                            value = value[:12] + "..."
+                        row_values.append(f"{value}")
+                    print(" | ".join(row_values))
+                
+                print(f"\nTotal de registros: {len(self.filtered_data)}")
+            else:
+                print("No se encontraron registros que cumplan con los filtros.")
                     
         return None
     
@@ -201,6 +199,7 @@ class MyCSVVisitor(CSVFilterVisitor):
         self.data = []
         self.filtered_data = []
         self.aggregations = {}
+        self.results = []  # Limpiar resultados anteriores
         self.current_operation = {}
         
         for operation in self.operations:
@@ -225,27 +224,37 @@ class MyCSVVisitor(CSVFilterVisitor):
             with open(filename, newline='', encoding='utf-8') as f:
                 self.data = list(csv.DictReader(f))
             self.filtered_data = self.data.copy()
-            print(f"Cargado archivo '{filename}' con {len(self.data)} registros.")
+            print(f"Archivo '{filename}' cargado: {len(self.data)} registros")
         except Exception as e:
             print(f"Error al cargar el archivo '{filename}': {e}")
             self.data = []
             self.filtered_data = []
     
-    def _apply_filter(self, filter_operation, data=None):
-        if data is None:
-            data = self.filtered_data
-            result_data = []
-        else:
-            result_data = []
-            
-        # Filtro estándar con operador
+    def _apply_filter(self, filter_operation):
         if "filter_type" not in filter_operation:
+            # Filtro estándar con operador
             column = filter_operation["column"]
             operator = filter_operation["operator"]
             value = filter_operation["value"]
             
-            for row in data:
+            filtered_results = []
+            for row in self.filtered_data:
+                if column not in row:
+                    continue
+                    
                 row_value = row[column]
+                
+                # Si estamos comparando cadenas, normalizar
+                if isinstance(value, str) and not value.replace('.', '', 1).isdigit():
+                    # Comparación de texto insensible a mayúsculas/minúsculas
+                    if operator == "==":
+                        if row_value.strip().lower() == value.strip().lower():
+                            filtered_results.append(row)
+                        continue
+                    elif operator == "!=":
+                        if row_value.strip().lower() != value.strip().lower():
+                            filtered_results.append(row)
+                        continue
                 
                 # Convertir a número o booleano si es necesario
                 if isinstance(value, (int, float)) or (isinstance(value, str) and value.replace('.', '', 1).isdigit()):
@@ -254,66 +263,97 @@ class MyCSVVisitor(CSVFilterVisitor):
                         if isinstance(value, str):
                             value = float(value)
                     except ValueError:
-                        pass
+                        continue  # Si no se puede convertir a número, ignorar el registro
                 elif isinstance(value, bool) or value in ('true', 'false'):
                     row_value = str(row_value).lower() == 'true'
                     if isinstance(value, str):
                         value = value.lower() == 'true'
                 
                 # Evaluar la condición del filtro
-                condition_met = self._evaluate_condition(row_value, operator, value)
+                if self._evaluate_condition(row_value, operator, value):
+                    filtered_results.append(row)
                     
-                # Manejar operadores lógicos y filtros anidados
-                if "logical_op" in filter_operation and "nested_filter" in filter_operation:
-                    nested_result = self._evaluate_nested_filter(row, filter_operation["nested_filter"])
-                    logical_op = filter_operation["logical_op"]
-                    
-                    if logical_op == "AND":
-                        condition_met = condition_met and nested_result
-                    elif logical_op == "OR":
-                        condition_met = condition_met or nested_result
-                
-                if condition_met:
-                    result_data.append(row)
+            self.filtered_data = filtered_results
         
-        # Filtro BETWEEN
         elif filter_operation["filter_type"] == "between":
+            # Filtro BETWEEN
             column = filter_operation["column"]
             value1 = filter_operation["value1"]
             value2 = filter_operation["value2"]
             
-            for row in data:
+            filtered_results = []
+            for row in self.filtered_data:
+                if column not in row:
+                    continue
+                    
                 try:
                     row_value = float(row[column])
-                    if row_value >= value1 and row_value <= value2:
-                        result_data.append(row)
-                except (ValueError, TypeError):
+                    if value1 <= row_value <= value2:
+                        filtered_results.append(row)
+                except ValueError:
                     pass  # Ignorar valores no numéricos
-        
-        # Filtro IN
+                    
+            self.filtered_data = filtered_results
+            
         elif filter_operation["filter_type"] == "in":
+            # Filtro IN
             column = filter_operation["column"]
             values = filter_operation["values"]
             
-            for row in data:
-                if row[column] in values:
-                    result_data.append(row)
-        
-        # Filtro LIKE
+            filtered_results = []
+            for row in self.filtered_data:
+                if column not in row:
+                    continue
+                    
+                row_value = row[column]
+                
+                # Para comparaciones de texto, normalizar
+                if all(isinstance(v, str) for v in values):
+                    # Normalizar valores para comparación de texto
+                    row_value = row_value.strip().lower()
+                    normalized_values = [v.strip().lower() for v in values]
+                    if row_value in normalized_values:
+                        filtered_results.append(row)
+                    continue
+                
+                # Convertir a número si los valores son numéricos
+                if all(isinstance(v, (int, float)) for v in values):
+                    try:
+                        row_value = float(row_value)
+                    except ValueError:
+                        continue
+                
+                if row_value in values:
+                    filtered_results.append(row)
+                    
+            self.filtered_data = filtered_results
+            
         elif filter_operation["filter_type"] == "like":
+            # Filtro LIKE
             column = filter_operation["column"]
             pattern = filter_operation["pattern"]
-            # Convertir patrón SQL LIKE a regex
-            pattern_regex = pattern.replace('%', '.*').replace('_', '.')
             
-            for row in data:
-                if re.search(pattern_regex, row[column], re.IGNORECASE):
-                    result_data.append(row)
-        
-        if data == self.filtered_data:
-            self.filtered_data = result_data
+            # Convertir patrón LIKE a expresión regular
+            regex_pattern = self._like_to_regex(pattern)
             
-        return result_data
+            filtered_results = []
+            for row in self.filtered_data:
+                if column not in row:
+                    continue
+                    
+                row_value = str(row[column])
+                if re.search(regex_pattern, row_value, re.IGNORECASE):
+                    filtered_results.append(row)
+                    
+            self.filtered_data = filtered_results
+    
+    def _like_to_regex(self, pattern):
+        """Convierte un patrón LIKE a una expresión regular"""
+        # Escapar caracteres especiales de regex
+        pattern = re.escape(pattern)
+        # Reemplazar los comodines de LIKE por equivalentes regex
+        pattern = pattern.replace('\\%', '.*').replace('\\_', '.')
+        return f"^{pattern}$"
     
     def _evaluate_condition(self, value1, operator, value2):
         if operator == '>':
@@ -328,40 +368,9 @@ class MyCSVVisitor(CSVFilterVisitor):
             return value1 == value2
         elif operator == '!=':
             return value1 != value2
-        elif operator == 'contains':
+        elif operator.lower() == 'contains':
             return str(value2) in str(value1)
         return False
-    
-    def _evaluate_nested_filter(self, row, filter_operation):
-        column = filter_operation["column"]
-        operator = filter_operation["operator"]
-        value = filter_operation["value"]
-        
-        row_value = row[column]
-        
-        # Convertir a número si es posible
-        if isinstance(value, (int, float)) or (isinstance(value, str) and value.replace('.', '', 1).isdigit()):
-            try:
-                row_value = float(row_value)
-                if isinstance(value, str):
-                    value = float(value)
-            except ValueError:
-                pass
-        
-        # Evaluar la condición
-        condition_met = self._evaluate_condition(row_value, operator, value)
-            
-        # Manejar filtros anidados recursivamente
-        if "logical_op" in filter_operation and "nested_filter" in filter_operation:
-            nested_result = self._evaluate_nested_filter(row, filter_operation["nested_filter"])
-            logical_op = filter_operation["logical_op"]
-            
-            if logical_op == "AND":
-                condition_met = condition_met and nested_result
-            elif logical_op == "OR":
-                condition_met = condition_met or nested_result
-                
-        return condition_met
     
     def _apply_aggregation(self, agg_operation):
         agg_type = agg_operation["aggregate_type"]
@@ -405,9 +414,6 @@ class MyCSVVisitor(CSVFilterVisitor):
             elif agg_type == "max":
                 result = max(numeric_values)
                 self.aggregations[f"max_{column}"] = result
-            elif agg_type == "between":
-                self.aggregations[f"min_{column}"] = min(numeric_values)
-                self.aggregations[f"max_{column}"] = max(numeric_values)
     
     def _evaluate_filter_condition(self, row, filter_condition):
         column = filter_condition["column"]
@@ -426,19 +432,7 @@ class MyCSVVisitor(CSVFilterVisitor):
                 pass
         
         # Evaluar la condición
-        condition_met = self._evaluate_condition(row_value, operator, value)
-        
-        # Manejar condiciones anidadas
-        if "logical_op" in filter_condition and "nested_condition" in filter_condition:
-            nested_result = self._evaluate_filter_condition(row, filter_condition["nested_condition"])
-            logical_op = filter_condition["logical_op"]
-            
-            if logical_op == "AND":
-                condition_met = condition_met and nested_result
-            elif logical_op == "OR":
-                condition_met = condition_met or nested_result
-        
-        return condition_met
+        return self._evaluate_condition(row_value, operator, value)
         
     def _apply_sort(self, sort_operation):
         column = sort_operation["column"]
@@ -461,11 +455,12 @@ class MyCSVVisitor(CSVFilterVisitor):
             )
     
     def _safe_numeric_value(self, value):
+        """Intenta convertir un valor a numérico de forma segura"""
         try:
             return float(value)
         except (ValueError, TypeError):
-            return float('-inf')  # Valores no numéricos van al inicio
-    
+            return str(value).lower()
+            
     def _apply_limit(self, limit_operation):
         limit = limit_operation["limit"]
         self.filtered_data = self.filtered_data[:limit]
@@ -475,12 +470,12 @@ class MyCSVVisitor(CSVFilterVisitor):
         first_key = join_operation["first_key"]
         second_key = join_operation["second_key"]
         
-        # Cargar el segundo archivo
         try:
+            # Cargar el segundo archivo
             with open(second_file, newline='', encoding='utf-8') as f:
                 second_data = list(csv.DictReader(f))
             
-            # Crear un índice para el segundo conjunto de datos
+            # Crear un índice para el segundo archivo
             second_index = {}
             for row in second_data:
                 key = row[second_key]
@@ -488,25 +483,24 @@ class MyCSVVisitor(CSVFilterVisitor):
                     second_index[key] = []
                 second_index[key].append(row)
             
-            # Realizar la unión
+            # Realizar el join
             joined_data = []
             for row in self.filtered_data:
-                key = row[first_key]
-                if key in second_index:
-                    for second_row in second_index[key]:
-                        # Crear una nueva fila combinando ambas
-                        new_row = {}
-                        new_row.update(row)
+                first_value = row[first_key]
+                if first_value in second_index:
+                    # Para cada fila coincidente en el segundo archivo
+                    for second_row in second_index[first_value]:
+                        # Combinar las filas
+                        joined_row = row.copy()
                         for k, v in second_row.items():
-                            if k != second_key:  # Evitar duplicar la columna de unión
-                                new_row[f"{second_file.split('.')[0]}_{k}"] = v
-                        joined_data.append(new_row)
+                            # Evitar sobrescribir columnas con el mismo nombre
+                            if k in joined_row and k != second_key:
+                                joined_row[f"{second_file}_{k}"] = v
+                            else:
+                                joined_row[k] = v
+                        joined_data.append(joined_row)
             
-            if joined_data:
-                self.filtered_data = joined_data
-                print(f"Join realizado: {len(joined_data)} registros resultantes.")
-            else:
-                print("Warning: El JOIN no produjo resultados.")
+            self.filtered_data = joined_data
                 
         except Exception as e:
             print(f"Error al realizar join con archivo '{second_file}': {e}")
