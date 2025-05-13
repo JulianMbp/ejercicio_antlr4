@@ -1,0 +1,812 @@
+{
+    "consultas": [
+        {
+            "id": 1,
+            "descripcion": "Cargar archivo de eventos",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "limit",
+                    "limite": 10
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "descripcion": "Filtrar conciertos",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "columna": "tipo_evento",
+                    "operador": "==",
+                    "valor": "Concierto"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "descripcion": "Filtrar eventos de Madrid",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "columna": "lugar",
+                    "operador": "==",
+                    "valor": "Madrid"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "descripcion": "Eventos con costo de entrada mayor a 100000",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "columna": "costo_entrada",
+                    "operador": ">",
+                    "valor": 100000
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "descripcion": "Contar todos los eventos",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "aggregate",
+                    "funcion": "count",
+                    "columna": "id_evento"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "descripcion": "Promedio de asistentes por evento",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "aggregate",
+                    "funcion": "average",
+                    "columna": "cantidad_asistentes"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "descripcion": "Suma total de asistentes",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "aggregate",
+                    "funcion": "sum",
+                    "columna": "cantidad_asistentes"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "descripcion": "Eventos con entrada más cara y más barata",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "aggregate",
+                    "funcion": "min",
+                    "columna": "costo_entrada"
+                },
+                {
+                    "tipo": "aggregate",
+                    "funcion": "max",
+                    "columna": "costo_entrada"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "descripcion": "Eventos en rango de asistentes entre 3000 y 5000",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "filter_type": "between",
+                    "columna": "cantidad_asistentes",
+                    "valor1": 3000,
+                    "valor2": 5000
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "descripcion": "Eventos patrocinados por Coca-Cola, Google o Microsoft",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "filter_type": "in",
+                    "columna": "patrocinadores",
+                    "valores": ["Coca-Cola", "Google", "Microsoft"]
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "descripcion": "Eventos cuyo nombre contiene la palabra 'Festival'",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "filter_type": "like",
+                    "columna": "nombre_evento",
+                    "patron": "%Festival%"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "descripcion": "Ordenar eventos por costo de entrada (mayor a menor)",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "sort",
+                    "columna": "costo_entrada",
+                    "orden": "desc"
+                },
+                {
+                    "tipo": "limit",
+                    "limite": 15
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "descripcion": "Ordenar eventos por fecha (más reciente primero)",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "sort",
+                    "columna": "fecha",
+                    "orden": "desc"
+                },
+                {
+                    "tipo": "limit",
+                    "limite": 15
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "descripcion": "Agrupar eventos por tipo",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "group",
+                    "columna": "tipo_evento"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "descripcion": "Agrupar eventos por estado",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "group",
+                    "columna": "estado_evento"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "descripcion": "Conciertos con más de 3000 asistentes",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "columna": "tipo_evento",
+                    "operador": "==",
+                    "valor": "Concierto"
+                },
+                {
+                    "tipo": "filter",
+                    "columna": "cantidad_asistentes",
+                    "operador": ">",
+                    "valor": 3000
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "descripcion": "Eventos en Madrid con costo de entrada menor a 50000",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "instruccion": "filter column \"lugar\" == \"Madrid\" AND filter column \"costo_entrada\" < 50000;"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "descripcion": "Eventos en Barcelona O con más de 4000 asistentes",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "instruccion": "filter column \"lugar\" == \"Barcelona\" OR filter column \"cantidad_asistentes\" > 4000;"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "descripcion": "Promedio de costo de entrada de conciertos",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "columna": "tipo_evento",
+                    "operador": "==",
+                    "valor": "Concierto"
+                },
+                {
+                    "tipo": "aggregate",
+                    "funcion": "average",
+                    "columna": "costo_entrada"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "descripcion": "Promedio de asistentes por estado de evento",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "group",
+                    "columna": "estado_evento"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "descripcion": "Top 10 eventos con mayor costo de entrada",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "sort",
+                    "columna": "costo_entrada",
+                    "orden": "desc"
+                },
+                {
+                    "tipo": "limit",
+                    "limite": 10
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "descripcion": "Top 10 eventos con menor costo de entrada",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "sort",
+                    "columna": "costo_entrada",
+                    "orden": "asc"
+                },
+                {
+                    "tipo": "limit",
+                    "limite": 10
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "descripcion": "Eventos cancelados",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "columna": "estado_evento",
+                    "operador": "==",
+                    "valor": "Cancelado"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "descripcion": "Contar eventos por estado",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "group",
+                    "columna": "estado_evento"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "descripcion": "Contar eventos por tipo",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "group",
+                    "columna": "tipo_evento"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "descripcion": "Eventos realizados con más de 3000 asistentes",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "instruccion": "filter column \"estado_evento\" == \"Realizado\" AND filter column \"cantidad_asistentes\" > 3000;"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "descripcion": "Costo promedio de eventos por tipo",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "group",
+                    "columna": "tipo_evento"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "descripcion": "Conciertos o Festivales con precio mayor a 150000",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "instruccion": "filter column \"tipo_evento\" == \"Concierto\" OR filter column \"tipo_evento\" == \"Festival\";"
+                },
+                {
+                    "tipo": "filter",
+                    "columna": "costo_entrada",
+                    "operador": ">",
+                    "valor": 150000
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "descripcion": "Eventos con costo de entrada entre 50000 y 100000",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "filter_type": "between",
+                    "columna": "costo_entrada",
+                    "valor1": 50000,
+                    "valor2": 100000
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "descripcion": "Eventos en Madrid, Barcelona o Valencia",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "filter_type": "in",
+                    "columna": "lugar",
+                    "valores": ["Madrid", "Barcelona", "Valencia"]
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "descripcion": "Eventos cuyo nombre termina en '2020'",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "filter_type": "like",
+                    "columna": "nombre_evento",
+                    "patron": "%2020"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "descripcion": "Eventos ordenados por nombre",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "sort",
+                    "columna": "nombre_evento",
+                    "orden": "asc"
+                },
+                {
+                    "tipo": "limit",
+                    "limite": 20
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 33,
+            "descripcion": "Eventos agrupados por organizador",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "group",
+                    "columna": "organizador"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 34,
+            "descripcion": "Total de asistentes a eventos programados",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "columna": "estado_evento",
+                    "operador": "==",
+                    "valor": "Programado"
+                },
+                {
+                    "tipo": "aggregate",
+                    "funcion": "sum",
+                    "columna": "cantidad_asistentes"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 35,
+            "descripcion": "Total de asistentes a eventos realizados",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "columna": "estado_evento",
+                    "operador": "==",
+                    "valor": "Realizado"
+                },
+                {
+                    "tipo": "aggregate",
+                    "funcion": "sum",
+                    "columna": "cantidad_asistentes"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 36,
+            "descripcion": "Promedio de asistentes por tipo de evento",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "group",
+                    "columna": "tipo_evento"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 37,
+            "descripcion": "Eventos con nombre que contiene 'Concierto' y están programados",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "filter_type": "like",
+                    "columna": "nombre_evento",
+                    "patron": "%Concierto%"
+                },
+                {
+                    "tipo": "filter",
+                    "columna": "estado_evento",
+                    "operador": "==",
+                    "valor": "Programado"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 38,
+            "descripcion": "Contar eventos con costo de entrada mayor a la media",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "aggregate",
+                    "funcion": "average",
+                    "columna": "costo_entrada"
+                },
+                {
+                    "instruccion": "filter column \"costo_entrada\" > 100000;"
+                },
+                {
+                    "tipo": "aggregate",
+                    "funcion": "count",
+                    "columna": "id_evento"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 39,
+            "descripcion": "Eventos en fechas del 2025",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "filter_type": "like",
+                    "columna": "fecha",
+                    "patron": "2025%"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        },
+        {
+            "id": 40,
+            "descripcion": "Comparativa de costos de eventos programados vs realizados",
+            "operaciones": [
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "columna": "estado_evento",
+                    "operador": "==",
+                    "valor": "Programado"
+                },
+                {
+                    "tipo": "aggregate",
+                    "funcion": "average",
+                    "columna": "costo_entrada"
+                },
+                {
+                    "tipo": "load",
+                    "archivo": "eventos.csv"
+                },
+                {
+                    "tipo": "filter",
+                    "columna": "estado_evento",
+                    "operador": "==",
+                    "valor": "Realizado"
+                },
+                {
+                    "tipo": "aggregate",
+                    "funcion": "average",
+                    "columna": "costo_entrada"
+                },
+                {
+                    "tipo": "print"
+                }
+            ]
+        }
+    ]
+} 

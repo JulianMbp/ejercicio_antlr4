@@ -1,0 +1,38 @@
+{
+    "operaciones": [
+        {
+            "tipo": "load",
+            "archivo": "eventos.csv"
+        },
+        {
+            "tipo": "filter",
+            "columna": "costo_entrada",
+            "operador": ">",
+            "valor": 100000
+        },
+        {
+            "tipo": "filter",
+            "columna": "tipo_evento",
+            "operador": "==",
+            "valor": "\"Concierto\""
+        },
+        {
+            "tipo": "aggregate",
+            "funcion": "count",
+            "columna": "id_evento"
+        },
+        {
+            "tipo": "aggregate",
+            "funcion": "average",
+            "columna": "cantidad_asistentes"
+        },
+        {
+            "tipo": "aggregate",
+            "funcion": "sum",
+            "columna": "costo_entrada"
+        },
+        {
+            "tipo": "print"
+        }
+    ]
+}

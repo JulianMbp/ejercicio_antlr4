@@ -1,0 +1,301 @@
+id_evento,nombre_evento,tipo_evento,fecha,lugar,organizador,costo_entrada,cantidad_asistentes,patrocinadores,estado_evento
+1,Exposición Molestiae 2021,Exposición,2026-04-03,Alicante,Vidal-Torre,10612,2171,"Claro, Nestlé, Huawei",Cancelado
+2,Festival Necessitatibus 2023,Taller,2026-02-15,Lugo,Gil-Vargas,57263,4184,Huawei,Programado
+3,Concierto Deserunt 1989,Taller,2024-08-28,Salamanca,Collado-Menéndez,65668,4412,"Tigo, Google, Huawei",Programado
+4,Seminario Consequuntur 2019,Concierto,2024-07-08,Lugo,"Cabrero, Otero and Rovira",179302,2754,"Movistar, Bavaria",Cancelado
+5,Exposición Ipsam 2011,Festival,2025-09-21,Navarra,Salas-Vázquez,160140,1725,"Claro, Tigo, Huawei",Programado
+6,Taller Facilis 1974,Concierto,2026-01-27,Ávila,"Pujadas, Abella and Uriarte",24450,3317,"Coca-Cola, Claro, Samsung",Programado
+7,Seminario Iusto 1986,Festival,2025-11-30,Teruel,Feijoo PLC,184455,565,Tigo,Programado
+8,Conferencia Est 1986,Conferencia,2026-01-25,Zaragoza,"Samper, Bou and Bernat",142341,3719,Bavaria,Cancelado
+9,Taller Ipsum 2004,Exposición,2026-05-06,Badajoz,Manuel-Casanovas,28588,2519,"Huawei, Bavaria, Samsung",Realizado
+10,Conferencia Quo 1992,Taller,2026-02-03,Zaragoza,"Maestre, Salgado and Bravo",143453,4863,"Claro, Bavaria",Realizado
+11,Exposición Saepe 2024,Festival,2025-03-06,Ourense,Manrique and Sons,150903,2033,"Google, Microsoft",Programado
+12,Concierto Eaque 1982,Taller,2024-06-06,Lugo,Borrás Ltd,172139,2180,"Bavaria, Tigo",Realizado
+13,Conferencia Delectus 1980,Conferencia,2026-04-29,Ávila,"Posada, Zamorano and Llorens",10129,707,"Movistar, Nestlé, Huawei",Realizado
+14,Conferencia Quasi 2025,Conferencia,2024-11-10,Soria,"Rius, Llopis and Sanjuan",178120,4881,"Tigo, Huawei",Cancelado
+15,Exposición Possimus 2014,Seminario,2025-09-22,Ávila,Carlos-Torrecilla,168085,2977,Samsung,Realizado
+16,Concierto Repudiandae 2012,Exposición,2025-01-27,Ciudad,Linares Inc,153898,2796,Microsoft,Programado
+17,Seminario Voluptatibus 1985,Festival,2025-02-24,Guipúzcoa,Barrios-Cabrero,30706,1856,"Google, Samsung",Cancelado
+18,Concierto Dignissimos 2017,Concierto,2024-10-28,Ourense,"Benavent, Amor and Casanova",38366,1842,Tigo,Realizado
+19,Taller Tempora 1982,Taller,2025-08-25,La Coruña,Pellicer Inc,178412,656,Bavaria,Realizado
+20,Conferencia Amet 2011,Taller,2024-05-28,Cádiz,"Casals, Tello and Galvez",150982,1030,"Bavaria, Samsung",Programado
+21,Concierto Assumenda 2016,Taller,2024-05-29,Salamanca,Juan Inc,5671,1644,Bavaria,Cancelado
+22,Conferencia Est 1974,Seminario,2025-09-26,Huelva,Escribano-Barriga,16013,236,"Nestlé, Bavaria, Huawei",Programado
+23,Conferencia Provident 2001,Concierto,2024-06-11,Tarragona,Flores-Juan,169587,2516,"Nestlé, Google",Programado
+24,Taller Magnam 2019,Exposición,2025-05-12,Tarragona,"Frutos, Barco and Cuadrado",10322,4936,Nestlé,Programado
+25,Festival Dolorem 1993,Festival,2025-06-27,Baleares,"Salamanca, Díez and Alcalde",191784,3902,"Google, Microsoft, Coca-Cola",Realizado
+26,Conferencia Optio 2016,Conferencia,2025-03-26,Segovia,Pont-Iglesia,89735,4387,"Bavaria, Claro",Realizado
+27,Conferencia Dolor 2008,Concierto,2025-10-30,Lleida,"Bermúdez, Narváez and Arroyo",123633,3407,"Movistar, Huawei, Samsung",Cancelado
+28,Seminario Quisquam 1989,Festival,2024-08-24,Valladolid,Ortuño-Maestre,40216,4642,"Coca-Cola, Claro, Bavaria",Cancelado
+29,Seminario Veniam 1994,Concierto,2025-08-13,Teruel,Pons-Ribas,142690,2350,Microsoft,Cancelado
+30,Festival Totam 1975,Taller,2024-05-13,Tarragona,Cuesta-Heras,75465,2992,"Tigo, Google, Huawei",Cancelado
+31,Seminario Et 2013,Exposición,2025-04-25,Teruel,"Ribas, Angulo and Quesada",170611,711,Tigo,Programado
+32,Seminario Voluptates 2008,Festival,2025-04-01,Cáceres,Bartolomé-Jove,41963,2011,Claro,Cancelado
+33,Seminario Voluptates 1980,Seminario,2025-04-23,Navarra,"Abad, Arias and Urrutia",148937,3444,Nestlé,Realizado
+34,Taller Itaque 1991,Exposición,2026-02-21,Almería,Fabra-Blanco,173590,433,Claro,Programado
+35,Festival Delectus 1971,Seminario,2025-03-20,Guadalajara,García Inc,41336,3706,"Claro, Movistar, Coca-Cola",Programado
+36,Exposición A 2015,Festival,2025-06-26,Cantabria,Fiol LLC,81804,3874,Nestlé,Programado
+37,Taller Hic 2016,Seminario,2024-09-30,Lugo,Bertrán-Almeida,21880,1119,Nestlé,Realizado
+38,Exposición Harum 2000,Festival,2026-01-23,Córdoba,Viñas Ltd,889,1799,Coca-Cola,Realizado
+39,Taller Tenetur 1993,Taller,2024-08-09,Cuenca,Arnal Inc,25633,1610,Tigo,Realizado
+40,Conferencia Enim 2016,Festival,2024-11-29,Huesca,"Arnal, Urrutia and Segarra",73395,1542,Claro,Cancelado
+41,Seminario Tempore 1999,Concierto,2025-02-25,Castellón,Manuel-Agullo,5726,2300,"Bavaria, Huawei",Programado
+42,Seminario Deserunt 1980,Taller,2024-12-08,Guipúzcoa,Bueno-Neira,170598,2893,Google,Cancelado
+43,Concierto Sit 1972,Concierto,2024-06-13,Cáceres,Mancebo LLC,10659,1735,"Huawei, Movistar, Samsung",Cancelado
+44,Taller Nam 2007,Concierto,2024-08-20,Baleares,Heras-Asensio,196381,4100,"Claro, Nestlé, Samsung",Realizado
+45,Conferencia Inventore 1982,Conferencia,2026-03-08,Granada,Moya-Martínez,98455,4859,"Coca-Cola, Google",Programado
+46,Festival Nesciunt 1977,Festival,2024-07-28,Lugo,Nuñez-Casanova,88476,3058,"Bavaria, Samsung, Coca-Cola",Programado
+47,Festival Perferendis 1977,Conferencia,2025-11-06,Las Palmas,Matas LLC,39168,4829,"Samsung, Nestlé",Realizado
+48,Conferencia Vitae 1980,Festival,2026-04-26,Santa Cruz de Tenerife,"Peña, Bonet and Bastida",30119,3966,"Microsoft, Coca-Cola, Huawei",Programado
+49,Taller Blanditiis 1983,Seminario,2025-12-15,Almería,Aguiló-Cabañas,18576,2529,"Samsung, Huawei",Cancelado
+50,Concierto Mollitia 2007,Concierto,2025-06-19,León,Gaya-Rocha,147018,3991,"Samsung, Tigo",Programado
+51,Exposición Blanditiis 1995,Concierto,2024-10-29,Palencia,Rosado and Sons,183394,4127,"Coca-Cola, Huawei",Cancelado
+52,Seminario Magnam 1977,Seminario,2024-06-30,Melilla,Franch-Carrera,40806,1414,"Tigo, Nestlé, Bavaria",Programado
+53,Concierto Praesentium 1997,Conferencia,2024-11-27,Segovia,Garzón PLC,196573,1860,Nestlé,Programado
+54,Concierto Dignissimos 1977,Exposición,2024-10-12,Jaén,Corbacho-Calvo,145876,4301,"Claro, Tigo",Realizado
+55,Seminario Saepe 2003,Seminario,2024-09-04,Santa Cruz de Tenerife,"Rocha, Vázquez and Valbuena",56951,3515,Samsung,Programado
+56,Festival Veritatis 1991,Taller,2026-02-18,Madrid,"Franch, Gilabert and Agustí",43668,3582,Samsung,Programado
+57,Concierto Laboriosam 2018,Seminario,2025-12-13,Guadalajara,Zapata and Sons,7240,4357,"Microsoft, Bavaria",Cancelado
+58,Exposición Facere 2011,Festival,2026-01-11,Jaén,"Mariscal, Sosa and Batalla",54324,394,Tigo,Programado
+59,Concierto Blanditiis 2005,Conferencia,2026-03-17,Asturias,Castrillo Inc,120168,3146,"Movistar, Google",Programado
+60,Taller In 1971,Exposición,2025-12-22,Guipúzcoa,Comas Ltd,38902,4669,"Nestlé, Movistar",Cancelado
+61,Seminario Officia 1995,Festival,2025-06-08,Melilla,"Aragonés, Botella and Villaverde",130663,4134,"Microsoft, Movistar, Tigo",Programado
+62,Festival Sapiente 1975,Seminario,2025-12-13,Valladolid,Manjón PLC,195831,2657,"Coca-Cola, Movistar",Programado
+63,Festival Sapiente 1998,Taller,2026-02-12,Zamora,Guillen-Almagro,40869,3154,"Huawei, Claro, Bavaria",Programado
+64,Taller Unde 1970,Concierto,2025-12-08,Granada,"Iñiguez, Méndez and Bastida",17394,1893,Coca-Cola,Cancelado
+65,Concierto Possimus 1987,Exposición,2026-02-11,Vizcaya,Plana-Pla,86663,1366,Claro,Cancelado
+66,Taller Assumenda 1981,Exposición,2025-09-21,Ciudad,Múñiz-Baquero,138885,4165,Tigo,Programado
+67,Seminario Amet 2002,Taller,2025-04-01,Madrid,"Bilbao, Cordero and Osorio",198664,4966,Nestlé,Programado
+68,Festival Neque 1972,Taller,2025-08-30,Jaén,Arévalo-Cadenas,156923,3472,"Nestlé, Microsoft",Programado
+69,Seminario Optio 2022,Concierto,2024-09-06,Alicante,"Cazorla, Morante and Calzada",194181,1540,"Movistar, Huawei",Cancelado
+70,Concierto Voluptates 2007,Exposición,2025-09-28,Cantabria,Trujillo-Cantero,68683,2530,"Nestlé, Tigo",Programado
+71,Conferencia Assumenda 2011,Seminario,2025-11-07,Salamanca,"Nebot, Casanova and Marti",33376,2007,"Samsung, Coca-Cola",Programado
+72,Exposición Debitis 1996,Exposición,2026-01-22,Valencia,"Carrión, Villena and Fajardo",36937,4079,"Bavaria, Google, Samsung",Cancelado
+73,Concierto Amet 2023,Taller,2025-03-12,Huesca,Sarabia LLC,122232,3217,"Coca-Cola, Bavaria",Cancelado
+74,Conferencia Suscipit 1975,Concierto,2024-06-15,Madrid,Amor-Viña,8510,4951,"Google, Samsung, Bavaria",Realizado
+75,Taller Vel 2008,Seminario,2025-07-30,Ceuta,Vallés Ltd,90876,1647,"Claro, Bavaria",Programado
+76,Taller Qui 1998,Seminario,2025-06-09,Baleares,Rojas PLC,122470,2817,"Bavaria, Huawei, Google",Cancelado
+77,Festival Nisi 1975,Seminario,2026-05-08,La Rioja,Cabezas Group,178521,1045,"Microsoft, Coca-Cola, Nestlé",Cancelado
+78,Festival Dolor 2019,Conferencia,2024-06-04,Las Palmas,"Rincón, Andrés and Valdés",119398,2970,"Bavaria, Coca-Cola, Movistar",Cancelado
+79,Festival Itaque 2019,Concierto,2024-11-24,Huelva,Carrión LLC,136331,4713,"Microsoft, Tigo, Bavaria",Realizado
+80,Taller Voluptate 1972,Seminario,2025-02-04,Cádiz,Gual LLC,137287,3491,"Huawei, Bavaria, Google",Cancelado
+81,Taller Aut 2010,Exposición,2026-04-05,Castellón,Fuentes Ltd,22028,908,"Bavaria, Tigo",Cancelado
+82,Conferencia Veniam 2019,Seminario,2026-05-10,Valencia,Marcos LLC,8048,3709,"Nestlé, Coca-Cola",Cancelado
+83,Festival Voluptas 1971,Seminario,2026-05-06,Burgos,Santiago Inc,66213,693,"Bavaria, Tigo",Cancelado
+84,Seminario Perferendis 1993,Concierto,2025-11-12,Barcelona,Galindo LLC,90556,2899,Coca-Cola,Programado
+85,Festival Iusto 2002,Concierto,2024-12-25,Navarra,"Morillo, Espejo and Berrocal",156392,1223,Coca-Cola,Programado
+86,Seminario Corporis 2006,Seminario,2025-08-06,Cáceres,Collado-Casares,191916,1059,"Coca-Cola, Huawei, Samsung",Realizado
+87,Concierto Et 1991,Taller,2025-06-10,Ciudad,Manuel LLC,61043,1212,Claro,Programado
+88,Exposición Nihil 2015,Festival,2024-06-16,Pontevedra,Prada Inc,185461,2165,Coca-Cola,Programado
+89,Festival Voluptates 1974,Festival,2024-08-22,Granada,"Riera, Cisneros and Roca",124091,2447,"Movistar, Samsung",Programado
+90,Taller In 2013,Concierto,2025-02-11,Ciudad,Peiró-Ángel,26890,4418,"Huawei, Google, Nestlé",Programado
+91,Conferencia Aspernatur 1995,Conferencia,2025-03-25,La Rioja,"Montes, Sainz and Frías",82809,4214,Microsoft,Programado
+92,Festival Minima 1989,Festival,2025-05-12,Cádiz,Lluch Inc,110044,428,Tigo,Programado
+93,Exposición Quos 2011,Concierto,2025-10-28,Zamora,"Salmerón, Pujadas and Esteve",184069,649,Nestlé,Cancelado
+94,Taller Nihil 1999,Exposición,2024-09-24,Lleida,Zabala-Cisneros,194216,1215,"Nestlé, Huawei, Samsung",Programado
+95,Conferencia Libero 2001,Exposición,2025-09-14,Lugo,Mariño Inc,165879,3074,"Movistar, Coca-Cola, Nestlé",Cancelado
+96,Concierto Voluptatem 2000,Exposición,2025-09-04,Álava,Martín Inc,190888,2676,"Microsoft, Samsung",Cancelado
+97,Exposición Suscipit 1990,Concierto,2025-07-09,Las Palmas,"Soto, Bru and Valenciano",48616,939,"Bavaria, Movistar",Realizado
+98,Seminario Eveniet 2007,Conferencia,2025-12-24,Cuenca,"Almeida, Carrillo and León",184181,3704,"Google, Nestlé",Cancelado
+99,Conferencia Velit 1972,Conferencia,2024-05-12,La Coruña,"Prieto, Sales and Cal",118868,2838,"Google, Samsung, Claro",Realizado
+100,Seminario Explicabo 1994,Concierto,2024-12-18,Pontevedra,Aranda Inc,126691,1718,"Coca-Cola, Claro",Realizado
+101,Exposición Fuga 1990,Concierto,2025-06-30,Baleares,"Ibañez, Cárdenas and Bayo",57339,2495,Huawei,Realizado
+102,Taller Nesciunt 1989,Conferencia,2024-12-17,Ourense,"Gallo, Calzada and Reig",111203,3911,Claro,Programado
+103,Taller Tempora 2006,Exposición,2025-03-21,Girona,Peral-Cervera,73423,227,Huawei,Realizado
+104,Concierto Dolore 1978,Concierto,2025-11-04,Jaén,Solé-Chaparro,67259,3313,"Tigo, Nestlé, Claro",Programado
+105,Seminario Ratione 2015,Festival,2024-12-30,Santa Cruz de Tenerife,Ribes-Gibert,92752,2371,"Microsoft, Bavaria, Coca-Cola",Programado
+106,Festival Perferendis 2003,Festival,2025-11-02,Madrid,"Barrena, Saldaña and Marín",139890,2834,Movistar,Programado
+107,Conferencia Dicta 2020,Concierto,2025-05-31,Salamanca,Amigó LLC,108745,2423,"Movistar, Google",Realizado
+108,Taller Optio 1996,Seminario,2026-04-02,Melilla,Bertrán Ltd,55123,4403,Nestlé,Realizado
+109,Taller Velit 1996,Exposición,2024-05-16,Alicante,Acevedo LLC,194360,2332,"Claro, Samsung",Realizado
+110,Seminario Tempore 2017,Conferencia,2024-12-25,Burgos,"Maestre, Feijoo and Calzada",41174,1060,"Bavaria, Nestlé, Movistar",Realizado
+111,Exposición Nostrum 2001,Conferencia,2025-11-19,Jaén,Muro Group,146699,2499,"Claro, Nestlé",Programado
+112,Exposición Tenetur 2016,Exposición,2025-04-15,León,"Coloma, Zamora and Molina",182110,4158,"Claro, Coca-Cola",Cancelado
+113,Festival Delectus 1984,Conferencia,2026-04-19,León,Porcel-Roma,195352,4109,Tigo,Programado
+114,Concierto Porro 1996,Festival,2025-11-29,Zamora,Saavedra and Sons,123608,3252,Movistar,Programado
+115,Seminario Repudiandae 2018,Concierto,2024-06-19,Alicante,Blazquez and Sons,179908,3286,Samsung,Programado
+116,Concierto Maiores 1973,Taller,2025-12-10,Ceuta,"Martorell, Bolaños and Vigil",980,2264,"Huawei, Microsoft, Google",Realizado
+117,Festival Id 2022,Conferencia,2026-03-24,La Rioja,Balaguer-Villalonga,27645,3605,"Samsung, Nestlé",Programado
+118,Festival Vel 2014,Exposición,2025-07-11,Palencia,Trillo-Iñiguez,169870,3615,Claro,Realizado
+119,Conferencia Voluptatibus 2002,Taller,2024-10-26,Cuenca,Arranz Inc,82856,1108,Google,Cancelado
+120,Festival Dolorem 1993,Exposición,2024-05-15,Segovia,Checa Inc,112011,4080,"Microsoft, Tigo",Cancelado
+121,Conferencia Nobis 2016,Taller,2024-10-31,Navarra,Santiago and Sons,186121,457,"Coca-Cola, Microsoft",Realizado
+122,Concierto Labore 2011,Conferencia,2024-07-30,Zamora,Moraleda-Sarmiento,95318,516,"Google, Microsoft, Huawei",Realizado
+123,Concierto Itaque 1987,Seminario,2024-06-03,Cantabria,Bernat-Gallego,134248,2380,"Nestlé, Claro",Programado
+124,Seminario Qui 1993,Seminario,2024-10-04,Córdoba,"Mata, Miguel and Villanueva",135298,4532,"Nestlé, Claro, Movistar",Cancelado
+125,Seminario Molestiae 1987,Exposición,2025-05-21,Teruel,Arribas LLC,56470,2812,"Coca-Cola, Tigo",Programado
+126,Conferencia Quod 1974,Festival,2024-05-19,Madrid,"Ríos, Asenjo and Revilla",1015,2424,"Coca-Cola, Google, Bavaria",Cancelado
+127,Seminario Possimus 2001,Conferencia,2025-04-18,Ávila,Hernando Inc,159550,3298,"Microsoft, Claro, Tigo",Cancelado
+128,Taller Dolor 1998,Concierto,2026-03-29,León,"Benítez, Roldán and Prado",158952,751,"Samsung, Movistar",Cancelado
+129,Festival Animi 1982,Festival,2024-11-21,Ceuta,Lorenzo LLC,7557,4326,Microsoft,Cancelado
+130,Concierto Ipsum 1999,Conferencia,2024-08-03,Salamanca,"Fortuny, Martin and Sala",137498,2882,Microsoft,Cancelado
+131,Seminario Quam 2011,Seminario,2025-05-05,Cuenca,Alegre Inc,192833,2518,"Movistar, Nestlé",Cancelado
+132,Exposición Sint 2023,Festival,2025-11-15,Cádiz,"Ribera, Ibarra and Gibert",186772,2015,Huawei,Realizado
+133,Concierto Id 2020,Concierto,2025-10-06,Valencia,"Villalba, Romero and Ayala",120830,4107,"Claro, Coca-Cola, Nestlé",Cancelado
+134,Exposición Cupiditate 1996,Exposición,2025-09-25,Baleares,"Palomar, Gras and Luján",30965,751,Microsoft,Programado
+135,Conferencia Est 2020,Exposición,2026-02-17,Asturias,"Meléndez, Morán and Guillen",55958,3659,"Bavaria, Nestlé, Movistar",Programado
+136,Conferencia Minima 2012,Conferencia,2025-05-20,Palencia,Cervantes Inc,128454,1852,Huawei,Cancelado
+137,Festival Quod 2004,Exposición,2025-01-21,Palencia,"Amaya, Castilla and Priego",28124,4613,"Tigo, Movistar",Programado
+138,Seminario Dolor 1982,Festival,2025-06-12,Barcelona,Valdés PLC,115810,4260,"Claro, Movistar, Huawei",Cancelado
+139,Conferencia Voluptatem 1984,Concierto,2024-11-10,Ceuta,Osuna-Cazorla,31124,860,Nestlé,Programado
+140,Conferencia Suscipit 2003,Festival,2026-04-11,Salamanca,Zurita PLC,192959,102,"Movistar, Tigo, Nestlé",Programado
+141,Concierto Magnam 2003,Exposición,2025-04-30,Álava,Cánovas Ltd,169134,2282,Tigo,Cancelado
+142,Conferencia Possimus 2025,Seminario,2025-12-05,Murcia,Bermúdez-Jove,187839,4528,"Huawei, Microsoft, Movistar",Programado
+143,Taller Deserunt 2011,Festival,2025-03-20,Guadalajara,Plana-Barranco,176854,2731,Samsung,Realizado
+144,Exposición Eos 1972,Festival,2025-01-11,Guipúzcoa,Gonzalez-Juan,152583,1453,Coca-Cola,Realizado
+145,Taller Laborum 2015,Festival,2024-09-15,Albacete,Barragán-Corbacho,96203,4845,"Coca-Cola, Google, Nestlé",Programado
+146,Conferencia Libero 1971,Taller,2025-05-28,Albacete,Arrieta Inc,20042,1160,Claro,Realizado
+147,Seminario Et 2014,Conferencia,2025-01-20,Almería,Rocamora-Cerdán,61686,1132,Nestlé,Cancelado
+148,Taller Esse 2000,Taller,2025-04-15,Huelva,Elorza-Mulet,34744,4133,Tigo,Programado
+149,Taller Nemo 1996,Taller,2024-05-19,Córdoba,"Sevillano, Arnaiz and Casado",94008,4057,"Huawei, Coca-Cola",Programado
+150,Taller Nemo 1996,Seminario,2024-09-22,Málaga,Vilaplana Ltd,42739,4102,"Claro, Movistar, Samsung",Realizado
+151,Concierto Voluptates 1980,Festival,2024-07-12,Ciudad,Huerta Inc,36030,5000,"Microsoft, Samsung",Cancelado
+152,Exposición Dolores 2020,Concierto,2026-01-13,Teruel,Roldán PLC,54699,363,"Microsoft, Samsung",Cancelado
+153,Seminario Corporis 2012,Seminario,2025-09-12,Teruel,Arjona LLC,172954,1900,"Samsung, Google",Cancelado
+154,Concierto Laboriosam 2024,Festival,2025-12-06,Albacete,"Arce, Valderrama and Borrás",150363,4469,Google,Cancelado
+155,Concierto Magnam 1989,Exposición,2025-10-15,Lleida,Vera LLC,164581,552,Microsoft,Programado
+156,Concierto Dolorem 2020,Conferencia,2025-12-17,Guipúzcoa,Ugarte-Pozo,171409,2726,Coca-Cola,Cancelado
+157,Seminario Accusantium 1991,Exposición,2025-06-27,Navarra,Arana-Jáuregui,35612,1823,"Nestlé, Google",Cancelado
+158,Festival Vitae 1972,Conferencia,2025-05-01,Toledo,Quintanilla LLC,170151,2743,"Nestlé, Tigo, Coca-Cola",Cancelado
+159,Festival Possimus 1973,Taller,2024-05-28,Valencia,Izquierdo Ltd,139286,3840,Tigo,Programado
+160,Exposición Vero 2009,Exposición,2025-11-08,Soria,Ángel PLC,44909,75,"Google, Movistar, Tigo",Programado
+161,Festival Laboriosam 1996,Conferencia,2026-02-19,Castellón,Mur and Sons,46209,2071,Google,Realizado
+162,Seminario Repudiandae 2015,Taller,2025-11-22,Cáceres,Muro Ltd,44122,692,"Tigo, Bavaria",Realizado
+163,Seminario Accusamus 2009,Exposición,2026-02-05,Ourense,Ocaña LLC,186150,1279,"Tigo, Coca-Cola, Huawei",Cancelado
+164,Seminario Illum 2012,Seminario,2024-12-25,Madrid,Rosa-Domínguez,98701,273,"Coca-Cola, Claro, Bavaria",Cancelado
+165,Festival A 2023,Seminario,2024-08-29,León,Noguera Inc,39533,3802,Movistar,Cancelado
+166,Conferencia Perferendis 2015,Seminario,2026-02-06,Valencia,"Expósito, Becerra and Rodrigo",197388,3365,"Huawei, Claro",Cancelado
+167,Concierto Hic 1981,Festival,2025-06-27,Asturias,"Criado, Canet and Varela",139025,2411,"Claro, Coca-Cola, Huawei",Realizado
+168,Concierto Suscipit 2024,Exposición,2025-07-08,Valladolid,Larrañaga-Merino,103563,1033,"Samsung, Claro",Programado
+169,Concierto Id 1970,Festival,2025-04-09,Córdoba,"Águila, Monreal and Nogués",193975,330,"Tigo, Huawei",Realizado
+170,Conferencia Eaque 2018,Taller,2026-01-09,Zamora,Aguado PLC,135334,2837,"Huawei, Microsoft",Programado
+171,Taller Dolor 2023,Festival,2025-10-07,Huesca,Arce-Requena,63608,4851,"Movistar, Samsung, Google",Programado
+172,Festival Tempora 2011,Seminario,2026-01-22,Albacete,Ángel-Cuadrado,2383,4841,Tigo,Programado
+173,Festival Vero 1983,Festival,2025-09-14,Santa Cruz de Tenerife,"Valdés, Aliaga and Ibañez",76333,2453,"Claro, Nestlé",Realizado
+174,Exposición Rem 1986,Conferencia,2024-12-11,Valladolid,Bermejo-Samper,265,1203,"Coca-Cola, Claro, Google",Cancelado
+175,Concierto Ex 2020,Seminario,2025-11-17,Málaga,"Cabrera, Fabra and Córdoba",125937,2160,"Tigo, Microsoft, Bavaria",Realizado
+176,Exposición Nulla 1974,Festival,2026-05-02,Santa Cruz de Tenerife,Llabrés-Iriarte,45569,4387,Bavaria,Realizado
+177,Seminario Nostrum 2021,Conferencia,2026-01-02,Salamanca,Botella-Melero,151961,951,"Movistar, Nestlé, Tigo",Cancelado
+178,Festival Aliquam 2003,Festival,2024-05-20,Cantabria,Pomares-Ruano,3574,3561,"Huawei, Tigo, Samsung",Cancelado
+179,Conferencia Tempora 2012,Seminario,2025-10-16,Tarragona,Sola LLC,113166,1210,Movistar,Programado
+180,Seminario Reiciendis 1978,Seminario,2025-07-24,Guadalajara,Puig Group,147661,3196,"Claro, Coca-Cola",Realizado
+181,Exposición Quasi 1979,Seminario,2024-06-13,Ourense,Paniagua-Acuña,160991,1920,Samsung,Realizado
+182,Conferencia Atque 1982,Seminario,2025-11-20,Sevilla,"Sotelo, Aroca and Miranda",50989,2953,"Claro, Coca-Cola, Microsoft",Realizado
+183,Conferencia Alias 1991,Festival,2025-03-12,Valladolid,"Llopis, Ramos and Cisneros",48533,3490,Tigo,Cancelado
+184,Conferencia Saepe 1980,Seminario,2025-03-21,Málaga,Cánovas and Sons,187122,3733,"Bavaria, Microsoft, Google",Cancelado
+185,Concierto Deleniti 2002,Exposición,2025-11-10,Toledo,"Arranz, Ponce and Escribano",166395,3283,"Huawei, Nestlé",Cancelado
+186,Taller Laborum 2024,Festival,2025-08-10,Ávila,"Díaz, Lara and Fortuny",23757,2565,Claro,Programado
+187,Festival Facilis 1992,Conferencia,2025-11-07,Zamora,Villar-Sastre,199846,3309,"Nestlé, Tigo",Realizado
+188,Concierto Dolor 2021,Taller,2026-04-11,Navarra,Arias Ltd,121979,2954,"Google, Huawei, Samsung",Programado
+189,Exposición Reprehenderit 1982,Exposición,2025-09-22,Valladolid,Bellido-Ferrando,136758,1158,Bavaria,Realizado
+190,Festival Tenetur 2023,Festival,2025-05-01,Zaragoza,Yuste-Cuervo,1177,618,Bavaria,Realizado
+191,Taller Voluptatum 1992,Exposición,2026-04-20,Lugo,"Barceló, Blanca and Villaverde",11303,2626,Samsung,Cancelado
+192,Conferencia Laboriosam 1970,Seminario,2026-02-02,Badajoz,Ortuño-Sanmiguel,72111,3379,"Google, Tigo, Nestlé",Cancelado
+193,Taller Iusto 1995,Concierto,2025-06-13,Santa Cruz de Tenerife,Cerdán LLC,42706,1077,Claro,Realizado
+194,Seminario Adipisci 1982,Seminario,2025-12-02,Albacete,Ferrando-Arregui,189680,432,"Movistar, Coca-Cola, Nestlé",Programado
+195,Festival Neque 2013,Taller,2024-06-29,Zamora,Azorin-Diéguez,21705,711,"Google, Huawei, Microsoft",Cancelado
+196,Festival Magnam 1975,Seminario,2025-03-25,León,Jaume-Menendez,185774,2129,"Movistar, Claro",Programado
+197,Exposición Recusandae 2024,Taller,2025-04-29,Cádiz,Santiago LLC,40060,366,"Tigo, Google, Coca-Cola",Cancelado
+198,Concierto Eaque 1996,Conferencia,2024-06-30,Badajoz,Amo LLC,169974,3790,"Microsoft, Claro, Google",Realizado
+199,Festival Adipisci 1982,Seminario,2025-03-21,Guadalajara,Valcárcel-Tamayo,35357,3953,"Coca-Cola, Movistar, Bavaria",Realizado
+200,Festival Beatae 1973,Concierto,2025-07-02,Zamora,Amorós-Villalobos,20968,901,"Tigo, Samsung",Realizado
+201,Exposición Consequatur 1975,Festival,2025-01-26,Badajoz,Aparicio-Correa,99107,4247,"Bavaria, Google",Cancelado
+202,Concierto Quas 2012,Conferencia,2026-01-27,Alicante,Peñas LLC,192349,1074,Samsung,Realizado
+203,Conferencia Dolore 2007,Concierto,2025-11-03,Cáceres,Cuenca Ltd,108484,558,"Huawei, Nestlé, Coca-Cola",Realizado
+204,Seminario Vero 1986,Conferencia,2026-03-25,Albacete,Puig-Arregui,93817,684,"Coca-Cola, Claro",Cancelado
+205,Taller Et 1986,Taller,2025-09-17,Guipúzcoa,Gárate LLC,198303,2145,"Huawei, Claro, Nestlé",Programado
+206,Concierto Et 1981,Exposición,2026-03-25,Lleida,Cervera-Pomares,69245,1610,"Bavaria, Samsung",Programado
+207,Concierto Recusandae 2022,Concierto,2024-05-22,Palencia,Porta Ltd,91956,224,Nestlé,Realizado
+208,Seminario Doloribus 1980,Seminario,2024-05-27,Guadalajara,"Acevedo, Arenas and Arévalo",3577,2694,"Movistar, Claro",Cancelado
+209,Concierto Culpa 2008,Concierto,2025-08-29,Vizcaya,Pino Inc,140407,3342,"Coca-Cola, Movistar",Programado
+210,Concierto Nihil 1999,Festival,2025-07-27,Teruel,Cervera LLC,93991,856,"Coca-Cola, Google",Realizado
+211,Seminario Quaerat 1984,Festival,2025-06-30,Asturias,Raya PLC,9647,55,"Samsung, Google",Realizado
+212,Seminario Unde 1993,Conferencia,2024-07-25,Las Palmas,Sotelo Group,42089,1480,Microsoft,Realizado
+213,Festival Et 1996,Concierto,2024-11-14,La Coruña,"Bayón, Iniesta and Llorens",126593,3311,Microsoft,Programado
+214,Seminario Qui 1995,Festival,2025-07-07,Pontevedra,"Sánchez, Gálvez and Llorente",86132,1442,Samsung,Programado
+215,Conferencia Animi 2011,Exposición,2025-01-16,Santa Cruz de Tenerife,Atienza and Sons,121346,3026,"Google, Nestlé, Coca-Cola",Programado
+216,Taller Mollitia 1971,Concierto,2025-12-29,Toledo,Roselló-Calvo,180077,3244,"Google, Tigo, Coca-Cola",Programado
+217,Festival Officia 2011,Taller,2025-05-05,Cáceres,Sánchez-Reig,969,362,Bavaria,Realizado
+218,Taller Dolore 2010,Conferencia,2026-04-25,Valladolid,"Capdevila, Pedrosa and Ojeda",40147,3161,Nestlé,Cancelado
+219,Taller Dicta 2012,Seminario,2025-02-13,Santa Cruz de Tenerife,"Balaguer, Ferrán and Jiménez",87273,2081,Samsung,Realizado
+220,Conferencia Dolorum 2019,Taller,2025-08-08,Girona,Armengol-Manuel,104959,648,Nestlé,Realizado
+221,Seminario Quod 1999,Festival,2024-06-08,Cuenca,Galindo-Oliver,25311,3585,"Microsoft, Claro",Cancelado
+222,Conferencia Deleniti 1978,Exposición,2024-08-05,Cáceres,Ros PLC,62928,3991,"Tigo, Bavaria",Cancelado
+223,Festival Nam 2001,Taller,2024-07-10,Vizcaya,Chacón-Dominguez,97464,4492,Tigo,Realizado
+224,Exposición Dolor 1984,Conferencia,2024-09-16,Albacete,"Cerdá, Ureña and Palau",72425,380,"Samsung, Nestlé, Bavaria",Realizado
+225,Concierto Soluta 2020,Conferencia,2024-12-21,Soria,Rebollo LLC,187033,3264,Nestlé,Realizado
+226,Exposición Dolore 1993,Exposición,2025-09-11,Murcia,"Coca, Peñalver and Mayoral",27477,3823,"Claro, Google, Movistar",Cancelado
+227,Exposición Ex 1995,Exposición,2025-02-05,Lugo,"Medina, Redondo and Ramos",41683,4884,"Movistar, Bavaria",Cancelado
+228,Festival Consequuntur 2016,Conferencia,2024-09-08,Álava,"Villar, Campillo and Fuentes",164784,2979,"Movistar, Coca-Cola",Programado
+229,Festival Saepe 2013,Conferencia,2025-08-23,Cuenca,"Domingo, Peña and Blázquez",189649,4831,"Huawei, Nestlé",Realizado
+230,Concierto Amet 1970,Festival,2024-08-09,Toledo,Monreal-Campoy,144555,3582,Nestlé,Cancelado
+231,Exposición Veritatis 2000,Seminario,2025-02-22,Sevilla,Granados-Cuenca,54571,2891,Google,Programado
+232,Taller Ratione 2007,Festival,2026-02-13,Vizcaya,"Diéguez, Amigó and Diaz",43452,305,"Tigo, Nestlé",Cancelado
+233,Concierto Quas 1997,Seminario,2025-08-27,León,"Quirós, Laguna and Almazán",186324,687,"Movistar, Tigo",Programado
+234,Conferencia Repudiandae 1979,Conferencia,2026-04-26,Cáceres,Baeza-Perez,54385,1397,Coca-Cola,Realizado
+235,Conferencia Commodi 2013,Exposición,2025-08-11,Guipúzcoa,Velázquez Group,93578,2409,"Samsung, Bavaria, Nestlé",Cancelado
+236,Conferencia Animi 2002,Festival,2025-09-05,Cuenca,"Trujillo, Prado and Suárez",164620,4158,"Movistar, Google",Cancelado
+237,Seminario Fuga 1982,Seminario,2024-11-06,Cáceres,Cobo-Saura,145615,2550,Nestlé,Cancelado
+238,Exposición Atque 1974,Exposición,2025-05-18,Ourense,Briones-Lara,134098,2558,"Nestlé, Bavaria",Realizado
+239,Conferencia Perspiciatis 1985,Conferencia,2026-02-03,Girona,Palomares Inc,1289,4829,"Movistar, Bavaria, Microsoft",Realizado
+240,Seminario Deserunt 2014,Taller,2026-03-14,Sevilla,Fiol Inc,134598,960,"Tigo, Google",Cancelado
+241,Concierto Aliquid 1997,Concierto,2025-07-19,Teruel,"Campo, Suárez and Olivera",2748,995,"Claro, Samsung",Programado
+242,Seminario Laboriosam 1976,Exposición,2025-10-26,Ciudad,Valenciano LLC,96755,4836,"Huawei, Claro, Microsoft",Programado
+243,Taller Harum 1985,Taller,2024-05-18,Huelva,"Nogueira, Bravo and Berenguer",20429,4211,Coca-Cola,Realizado
+244,Conferencia Inventore 2009,Taller,2025-04-05,Valencia,Piquer-Codina,107191,1754,"Nestlé, Huawei",Programado
+245,Taller Eveniet 1989,Conferencia,2026-05-08,Valencia,Palomar-Luna,101769,1453,"Tigo, Coca-Cola",Cancelado
+246,Concierto Molestiae 2011,Seminario,2024-08-20,La Coruña,Vall-Sotelo,154197,3369,"Microsoft, Movistar",Cancelado
+247,Concierto Eum 2014,Exposición,2025-11-13,Santa Cruz de Tenerife,Rosales-Lobato,162530,883,"Movistar, Claro",Realizado
+248,Seminario Magnam 1997,Exposición,2025-12-28,Badajoz,Manuel-Carrillo,123909,2223,Microsoft,Realizado
+249,Festival Occaecati 1980,Conferencia,2025-02-03,Valencia,Neira Group,79286,1226,"Bavaria, Tigo",Cancelado
+250,Exposición Eum 1977,Taller,2025-10-23,Jaén,Vilanova-Serrano,107474,4605,Huawei,Cancelado
+251,Conferencia Recusandae 2012,Concierto,2024-10-30,Málaga,Torrecilla-Guerrero,77776,1205,"Bavaria, Google",Realizado
+252,Concierto Ipsam 2005,Seminario,2025-10-25,Ávila,Molins-Prado,35863,4854,"Microsoft, Coca-Cola, Movistar",Cancelado
+253,Taller Eum 1999,Seminario,2024-06-18,La Rioja,Lago and Sons,198007,4979,"Bavaria, Claro",Realizado
+254,Festival Itaque 1982,Festival,2024-08-07,Zaragoza,"Pascual, Anaya and Guillen",25567,92,Microsoft,Cancelado
+255,Festival Aperiam 1970,Festival,2025-03-05,Barcelona,Flores Inc,58881,123,"Samsung, Movistar",Cancelado
+256,Concierto Omnis 1983,Concierto,2026-03-01,Melilla,"Ribes, Batlle and Elorza",79892,4749,"Microsoft, Samsung",Cancelado
+257,Conferencia Eveniet 1985,Conferencia,2026-05-03,Jaén,Abad-Ruano,75471,1682,"Claro, Samsung, Huawei",Cancelado
+258,Taller Eos 1995,Conferencia,2025-12-27,Salamanca,Andrade-Oliver,31315,3336,"Movistar, Claro",Programado
+259,Seminario Voluptatibus 1995,Seminario,2026-02-13,Soria,Cañizares-Villanueva,98025,2988,"Huawei, Samsung",Cancelado
+260,Seminario Consectetur 1987,Festival,2024-07-31,Cuenca,Cifuentes PLC,27600,3979,"Bavaria, Claro",Programado
+261,Festival Unde 1979,Conferencia,2025-03-02,Ourense,"Montenegro, Fortuny and Robledo",194857,1581,"Claro, Microsoft",Programado
+262,Seminario Quaerat 2004,Exposición,2024-08-13,Tarragona,Casanovas-Verdú,101899,3857,"Claro, Microsoft, Nestlé",Realizado
+263,Festival Occaecati 2001,Exposición,2024-09-27,Navarra,Castells-Rico,60989,2626,"Coca-Cola, Bavaria, Claro",Cancelado
+264,Exposición Facere 1995,Conferencia,2024-07-12,Ceuta,Hurtado-Orozco,113076,448,"Coca-Cola, Nestlé, Bavaria",Cancelado
+265,Conferencia Perspiciatis 2022,Seminario,2026-05-08,Albacete,Aguado-Quirós,85671,1512,Google,Realizado
+266,Festival Occaecati 1985,Concierto,2025-04-10,Córdoba,Taboada-Chico,61271,407,Nestlé,Realizado
+267,Concierto Eum 2000,Conferencia,2024-12-18,Segovia,Comas-Yuste,30537,1683,Claro,Programado
+268,Concierto Vitae 1975,Taller,2024-10-04,Melilla,"Casado, Barral and Cortina",162895,3451,Movistar,Programado
+269,Conferencia Laboriosam 1972,Conferencia,2025-01-26,Vizcaya,Portero-Expósito,108901,3178,"Coca-Cola, Nestlé",Programado
+270,Exposición Neque 2003,Concierto,2024-10-08,La Coruña,Nicolau Ltd,161418,2256,Tigo,Cancelado
+271,Seminario Quasi 1982,Festival,2025-11-25,Cádiz,"Roura, Cornejo and Uriarte",88427,3768,"Google, Movistar, Bavaria",Cancelado
+272,Concierto Ut 2008,Seminario,2026-05-03,Pontevedra,Aparicio-Herrero,27128,2285,Google,Realizado
+273,Seminario Placeat 2011,Conferencia,2026-02-26,Navarra,"Ferrándiz, Abascal and Arranz",99328,1746,"Samsung, Microsoft, Nestlé",Realizado
+274,Taller Assumenda 1979,Concierto,2024-11-16,Soria,"Goicoechea, Canales and Villalobos",146695,914,"Claro, Bavaria, Tigo",Cancelado
+275,Conferencia Nisi 2013,Exposición,2025-09-16,Soria,Uriarte-Fernandez,143595,2833,Nestlé,Cancelado
+276,Exposición Dolorem 1995,Concierto,2025-07-18,Teruel,Portillo-Ródenas,148106,4190,"Microsoft, Claro",Programado
+277,Festival Ut 1991,Exposición,2026-02-28,Asturias,Gimeno Inc,107552,245,"Coca-Cola, Movistar",Cancelado
+278,Exposición Dolor 1996,Conferencia,2025-05-07,Huesca,"Artigas, Almazán and Ramis",112587,2024,"Claro, Tigo",Programado
+279,Conferencia Eos 1975,Exposición,2026-03-06,Palencia,"Reina, Galvez and Acosta",74323,2998,"Claro, Google, Bavaria",Programado
+280,Festival Velit 1979,Taller,2025-06-28,Granada,Batalla-Bermudez,165387,1055,Google,Cancelado
+281,Concierto Sed 2019,Festival,2025-05-29,Castellón,Palomino-Miguel,162997,1363,"Nestlé, Microsoft",Cancelado
+282,Exposición Blanditiis 2020,Conferencia,2024-05-30,Salamanca,Vila LLC,43912,3252,Samsung,Realizado
+283,Taller Dolor 2001,Conferencia,2024-11-28,Palencia,Lopez-Gimenez,189773,2737,Movistar,Realizado
+284,Seminario Modi 1996,Taller,2025-12-12,Ceuta,"Laguna, Borrell and Arregui",152749,3605,Tigo,Cancelado
+285,Seminario Dolor 1991,Taller,2025-09-10,Asturias,"Tello, Royo and Montenegro",55935,4949,"Coca-Cola, Microsoft",Cancelado
+286,Taller Molestiae 2019,Festival,2026-03-20,Baleares,Cañellas-Cifuentes,145704,1658,Coca-Cola,Programado
+287,Conferencia Aliquam 1978,Conferencia,2025-11-10,Ciudad,Lladó LLC,116187,1884,"Bavaria, Movistar, Nestlé",Realizado
+288,Seminario Molestiae 1977,Festival,2025-02-03,Huesca,"Falcó, Barreda and Nevado",179050,2820,"Microsoft, Google",Cancelado
+289,Taller Quam 2007,Festival,2024-05-22,Madrid,Jordá LLC,188089,3639,"Claro, Samsung",Cancelado
+290,Concierto Deserunt 1993,Conferencia,2024-07-28,Zamora,Infante PLC,57612,978,Nestlé,Cancelado
+291,Seminario Corporis 2005,Taller,2024-07-09,Madrid,Viña and Sons,55055,3063,"Coca-Cola, Tigo, Nestlé",Programado
+292,Concierto Laborum 1976,Exposición,2025-07-19,Cádiz,"Grau, Pujol and Fortuny",153478,4716,"Movistar, Microsoft",Realizado
+293,Concierto Sequi 2017,Seminario,2025-12-11,Huelva,Leon Ltd,35751,4398,"Claro, Huawei, Nestlé",Realizado
+294,Taller Laudantium 2007,Concierto,2026-03-04,Castellón,Mir-Castells,20521,4086,Microsoft,Cancelado
+295,Taller Harum 2008,Festival,2025-10-10,Ávila,"Mosquera, Mendez and Morales",81810,735,"Coca-Cola, Microsoft, Tigo",Realizado
+296,Taller Aliquid 1975,Festival,2025-08-30,Girona,Delgado Ltd,40207,3865,"Bavaria, Claro",Cancelado
+297,Conferencia Harum 1983,Exposición,2025-06-14,León,Ribera PLC,100679,4201,"Microsoft, Huawei",Programado
+298,Concierto Quibusdam 1997,Conferencia,2024-08-15,Palencia,Morante-Dávila,82715,4835,"Claro, Bavaria, Tigo",Cancelado
+299,Festival Impedit 1986,Exposición,2025-09-12,Soria,"Madrid, Angulo and Alsina",191145,248,Nestlé,Realizado
+300,Seminario Accusamus 2013,Conferencia,2026-02-27,Asturias,"Millán, Molins and Madrigal",199658,1211,Bavaria,Realizado
