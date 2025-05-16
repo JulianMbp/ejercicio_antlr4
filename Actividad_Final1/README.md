@@ -30,21 +30,36 @@ Este comando inicia la interfaz interactiva que permite:
 - Ver estadísticas de eventos
 - Realizar filtros avanzados combinados
 
-### Ejecutar consultas desde un archivo DSL
-
-```bash
-# Crear un archivo DSL con la consulta
-echo 'load "eventos.csv"; filter column "tipo_evento" == "Concierto"; print;' > test.dsl
-
-# Ejecutar la consulta directamente
-python main.py test.dsl
-```
 
 ### Ejecutar consultas desde un archivo JSON
 
 ```bash
+# Ejecutar todas las consultas del archivo
 python main.py consultas.json
+
+# Ejecutar una consulta específica por su ID
+python main.py consultas.json --id=5
 ```
+
+### Análisis léxico y sintáctico desde archivo JSON
+
+El programa permite realizar análisis léxico, sintáctico y visualización del árbol sintáctico de las consultas definidas en el archivo JSON:
+
+```bash
+# Mostrar análisis léxico para una consulta específica
+python main.py consultas.json --lexico --id=1
+
+# Mostrar árbol sintáctico en formato texto
+python main.py consultas.json --sintactico --id=1
+
+# Visualizar el árbol sintáctico con interfaz gráfica
+python main.py consultas.json --arbol --id=1
+
+# Combinar múltiples análisis en un solo comando
+python main.py consultas.json --lexico --sintactico --id=3
+```
+
+Estos comandos permiten analizar las consultas DSL generadas a partir de las definiciones en el archivo JSON. La opción `--id` permite seleccionar una consulta específica. Si no se especifica, se procesarán todas las consultas del archivo.
 
 ## Análisis Sintáctico
 

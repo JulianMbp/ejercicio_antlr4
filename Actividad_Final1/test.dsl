@@ -1,1 +1,0 @@
-load "eventos.csv"; filter column "tipo_evento" == "Concierto"; print;

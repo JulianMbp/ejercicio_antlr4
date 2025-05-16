@@ -1,6 +1,8 @@
 import json
 import os
 import sys
+import subprocess
+import tempfile
 from antlr4 import *
 from CSVFilterLexer import CSVFilterLexer
 from CSVFilterParser import CSVFilterParser
@@ -94,7 +96,146 @@ def procesar_script_desde_dsl(ruta_archivo, mostrar_mensajes=False):
         traceback.print_exc()
         return []
 
-def procesar_script_desde_json(ruta_json, consulta_id=None, mostrar_mensajes=True):
+def mostrar_analisis_lexico(dsl_content, verbose=True):
+    """Muestra los tokens generados por el analizador léxico"""
+    if verbose:
+        print("\n===== ANÁLISIS LÉXICO =====")
+    
+    # Crear un archivo temporal con el contenido DSL
+    with tempfile.NamedTemporaryFile(suffix='.dsl', delete=False, mode='w', encoding='utf-8') as temp_file:
+        temp_file.write(dsl_content)
+        temp_dsl = temp_file.name
+    
+    try:
+        # Ejecutar antlr4-parse con la opción -tokens para obtener la salida sin procesar
+        comando = f"cat {temp_dsl} | antlr4-parse CSVFilter.g4 prog -tokens"
+        print(f"Ejecutando: {comando}")
+        
+        proceso = subprocess.Popen(comando, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        salida, error = proceso.communicate()
+        
+        # Mostrar la salida tal cual la genera antlr4
+        if salida:
+            salida_str = salida.decode('utf-8')
+            print(salida_str)
+        
+        # Mostrar los errores tal cual los genera antlr4
+        if error:
+            error_str = error.decode('utf-8')
+            print(error_str)
+            
+        # También obtener los tokens usando la API de Python para devolver para uso interno
+        input_stream = InputStream(dsl_content)
+        lexer = CSVFilterLexer(input_stream)
+        tokens = lexer.getAllTokens()
+        
+        # Limpiar
+        if os.path.exists(temp_dsl):
+            os.remove(temp_dsl)
+            
+        return tokens
+    except Exception as e:
+        if verbose:
+            print(f"Error en el análisis léxico: {e}")
+        if os.path.exists(temp_dsl):
+            os.remove(temp_dsl)
+        return []
+
+def mostrar_analisis_sintactico(dsl_content, verbose=True):
+    """Muestra el árbol sintáctico en formato de texto"""
+    if verbose:
+        print("\n===== ANÁLISIS SINTÁCTICO =====")
+    
+    # Crear un archivo temporal con el contenido DSL
+    with tempfile.NamedTemporaryFile(suffix='.dsl', delete=False, mode='w', encoding='utf-8') as temp_file:
+        temp_file.write(dsl_content)
+        temp_dsl = temp_file.name
+    
+    try:
+        # Ejecutar antlr4-parse con la opción -tree para obtener la salida sin procesar
+        comando = f"cat {temp_dsl} | antlr4-parse CSVFilter.g4 prog -tree"
+        print(f"Ejecutando: {comando}")
+        
+        proceso = subprocess.Popen(comando, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        salida, error = proceso.communicate()
+        
+        # Mostrar la salida tal cual la genera antlr4
+        if salida:
+            salida_str = salida.decode('utf-8')
+            print(salida_str)
+        
+        # Mostrar los errores tal cual los genera antlr4
+        if error:
+            error_str = error.decode('utf-8')
+            print(error_str)
+        
+        # También crear el árbol usando la API de Python para devolver para uso interno
+        input_stream = InputStream(dsl_content)
+        lexer = CSVFilterLexer(input_stream)
+        stream = CommonTokenStream(lexer)
+        parser = CSVFilterParser(stream)
+        
+        # Agregar el manejador de errores
+        parser.removeErrorListeners()
+        parser.addErrorListener(CustomErrorListener())
+        
+        # Obtener el árbol sintáctico
+        tree = parser.prog()
+        
+        # Limpiar
+        if os.path.exists(temp_dsl):
+            os.remove(temp_dsl)
+            
+        return tree
+    except Exception as e:
+        if verbose:
+            print(f"Error en el análisis sintáctico: {e}")
+        if os.path.exists(temp_dsl):
+            os.remove(temp_dsl)
+        return None
+
+def mostrar_arbol_sintactico_gui(dsl_content):
+    """Muestra el árbol sintáctico con interfaz gráfica usando antlr4-parse"""
+    print("\n===== VISUALIZACIÓN DEL ÁRBOL SINTÁCTICO =====")
+    
+    # Crear un archivo temporal con el contenido DSL
+    with tempfile.NamedTemporaryFile(suffix='.dsl', delete=False, mode='w', encoding='utf-8') as temp_file:
+        temp_file.write(dsl_content)
+        temp_dsl = temp_file.name
+    
+    try:
+        # Construir el comando para usar antlr4-parse con -gui
+        # Asegúrate de que el archivo CSVFilter.g4 esté en el directorio actual
+        comando = f"cat {temp_dsl} | antlr4-parse CSVFilter.g4 prog -gui"
+        
+        print(f"Ejecutando: {comando}")
+        
+        # Ejecutar el comando y mostrar la salida sin procesar
+        proceso = subprocess.Popen(comando, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        salida, error = proceso.communicate()
+        
+        # Mostrar la salida tal cual la genera antlr4
+        if salida:
+            salida_str = salida.decode('utf-8')
+            print(salida_str)
+        
+        # Mostrar los errores tal cual los genera antlr4
+        if error:
+            error_str = error.decode('utf-8')
+            print(error_str)
+        
+        # Limpiar
+        if os.path.exists(temp_dsl):
+            os.remove(temp_dsl)
+            
+        return proceso.returncode == 0
+    except Exception as e:
+        print(f"Error al visualizar el árbol sintáctico: {e}")
+        if os.path.exists(temp_dsl):
+            os.remove(temp_dsl)
+        return False
+
+def procesar_script_desde_json(ruta_json, consulta_id=None, mostrar_mensajes=True, mostrar_lexico=False, mostrar_sintactico=False, mostrar_arbol_gui=False):
     """Procesa un script JSON convirtiéndolo a DSL"""
     if mostrar_mensajes:
         print(f"\nProcesando consulta desde: {ruta_json}")
@@ -167,6 +308,21 @@ def procesar_script_desde_json(ruta_json, consulta_id=None, mostrar_mensajes=Tru
             
             # Combinar todas las instrucciones en un solo script DSL
             script_dsl = "\n".join(instrucciones)
+            
+            # Si se solicita análisis léxico, mostrarlo
+            if mostrar_lexico:
+                print(f"\nConsulta DSL generada para '{consulta.get('descripcion', 'Consulta')}': \n{script_dsl}")
+                mostrar_analisis_lexico(script_dsl)
+            
+            # Si se solicita análisis sintáctico, mostrarlo
+            if mostrar_sintactico:
+                print(f"\nAnálisis sintáctico para '{consulta.get('descripcion', 'Consulta')}':")
+                mostrar_analisis_sintactico(script_dsl)
+            
+            # Si se solicita visualización del árbol, mostrarla
+            if mostrar_arbol_gui:
+                print(f"\nVisualizando árbol sintáctico para '{consulta.get('descripcion', 'Consulta')}':")
+                mostrar_arbol_sintactico_gui(script_dsl)
             
             # Escribir el script DSL a un archivo temporal
             temp_dsl_file = "temp_script.dsl"
@@ -277,11 +433,46 @@ def main():
     if len(sys.argv) > 1:
         archivo = sys.argv[1]
         
+        # Verificar opciones adicionales
+        mostrar_lexico = "--lexico" in sys.argv
+        mostrar_sintactico = "--sintactico" in sys.argv
+        mostrar_arbol_gui = "--arbol" in sys.argv
+        
+        # Verificar si se especifica un ID de consulta específico
+        consulta_id = None
+        for arg in sys.argv:
+            if arg.startswith("--id="):
+                try:
+                    consulta_id = int(arg.split("=")[1])
+                except ValueError:
+                    print("Error: El argumento --id debe tener un número entero")
+                    return
+        
         if archivo.endswith(".json"):
-            procesar_script_desde_json(archivo)
+            procesar_script_desde_json(archivo, consulta_id=consulta_id, 
+                                      mostrar_lexico=mostrar_lexico, 
+                                      mostrar_sintactico=mostrar_sintactico, 
+                                      mostrar_arbol_gui=mostrar_arbol_gui)
+        elif archivo.endswith(".dsl"):
+            # Para archivos DSL, si se solicita análisis léxico o sintáctico, hacerlo directamente
+            if mostrar_lexico or mostrar_sintactico or mostrar_arbol_gui:
+                with open(archivo, 'r', encoding='utf-8') as f:
+                    contenido = f.read()
+                
+                if mostrar_lexico:
+                    mostrar_analisis_lexico(contenido)
+                
+                if mostrar_sintactico:
+                    mostrar_analisis_sintactico(contenido)
+                
+                if mostrar_arbol_gui:
+                    mostrar_arbol_sintactico_gui(contenido)
+            
+            # Procesar el archivo DSL normalmente
+            procesar_script_desde_dsl(archivo)
         else:
             print(f"Formato de archivo no soportado: {archivo}")
-            print("Por favor proporcione un archivo .json")
+            print("Por favor proporcione un archivo .json o .dsl")
         return
         
     # Modo interactivo con menú
