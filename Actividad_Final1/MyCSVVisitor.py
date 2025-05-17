@@ -4,7 +4,7 @@ import re
 from CSVFilterVisitor import CSVFilterVisitor
 
 class MyCSVVisitor(CSVFilterVisitor):
-    def __init__(self):
+    def __init__(self, mostrar_carga=True):
         self.data = []
         self.filtered_data = []
         self.filename = ""
@@ -13,6 +13,9 @@ class MyCSVVisitor(CSVFilterVisitor):
         self.results = []
         self.joined_data = None
         self.current_operation = {}
+        self.mostrar_carga = mostrar_carga
+        self.loaded_file = None
+        self.error = None
         
     def visitProg(self, ctx):
         for stat in ctx.stat():
@@ -21,11 +24,21 @@ class MyCSVVisitor(CSVFilterVisitor):
         
     def visitLoadStat(self, ctx):
         self.filename = ctx.STRING().getText().replace('"', '')
+        self.loaded_file = self.filename
         self.operations.append({
             "type": "load",
             "filename": self.filename
         })
-        return None
+        
+        try:
+            with open(self.filename, newline='', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                self.filtered_data = list(reader)
+            
+            return self.filtered_data
+        except Exception as e:
+            self.error = f"Error al cargar el archivo CSV: {e}"
+            return None
 
     def visitFilterStat(self, ctx):
         column = ctx.STRING(0).getText().replace('"', '')
@@ -164,35 +177,12 @@ class MyCSVVisitor(CSVFilterVisitor):
         else:
             self.results = self.filtered_data.copy()
         
-        # Imprimir los resultados
-        if self.aggregations:
-            print("\n" + "="*30 + " RESULTADOS DE AGREGACIONES " + "="*30)
-            for agg_name, agg_value in self.aggregations.items():
-                print(f"{agg_name}: {agg_value}")
-            print("="*80)
-        else:
-            if self.filtered_data and len(self.filtered_data) > 0:
-                headers = list(self.filtered_data[0].keys())
-                header_row = " | ".join([f"{h[:15]}" for h in headers])
-                print(header_row)
-                print("-" * len(header_row))
-                
-                # Mostrar filas
-                for row in self.filtered_data:
-                    row_values = []
-                    for h in headers:
-                        value = str(row.get(h, ""))
-                        # Truncar valores largos
-                        if len(value) > 15:
-                            value = value[:12] + "..."
-                        row_values.append(f"{value}")
-                    print(" | ".join(row_values))
-                
-                print(f"\nTotal de registros: {len(self.filtered_data)}")
-            else:
-                print("No se encontraron registros que cumplan con los filtros.")
-                    
-        return None
+        # Registrar la operación pero sin imprimir nada
+        self.operations.append({
+            "type": "print"
+        })
+        
+        return self.filtered_data
     
     def _execute_operations(self):
         # Ejecutar operaciones acumuladas
@@ -224,7 +214,6 @@ class MyCSVVisitor(CSVFilterVisitor):
             with open(filename, newline='', encoding='utf-8') as f:
                 self.data = list(csv.DictReader(f))
             self.filtered_data = self.data.copy()
-            print(f"Archivo '{filename}' cargado: {len(self.data)} registros")
         except Exception as e:
             print(f"Error al cargar el archivo '{filename}': {e}")
             self.data = []

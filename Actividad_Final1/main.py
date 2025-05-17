@@ -13,7 +13,7 @@ import csv
 # Archivo con las consultas predefinidas
 CONSULTAS_FILE = "consultas.json"
 
-def procesar_script_desde_dsl(ruta_archivo, mostrar_mensajes=False):
+def procesar_script_desde_dsl(ruta_archivo, mostrar_mensajes=False, mostrar_resultados=True, mostrar_vista_previa=False):
     """Procesa un script DSL directamente"""
     
     input_stream = FileStream(ruta_archivo, encoding='utf-8')
@@ -27,67 +27,69 @@ def procesar_script_desde_dsl(ruta_archivo, mostrar_mensajes=False):
     
     try:
         tree = parser.prog()
-        visitor = MyCSVVisitor()
+        visitor = MyCSVVisitor(mostrar_carga=mostrar_vista_previa)  # Controlar si se muestra la vista previa
         visitor.visit(tree)
-        print("\nResultados:")
         
-        # Verificar si hay resultados de agregación 
-        if visitor.aggregations and len(visitor.aggregations) > 0:
-            print("=" * 50)
-            for agg_name, agg_value in visitor.aggregations.items():
-                # Formatear el valor si es un número para mayor legibilidad
-                formatted_value = agg_value
-                if isinstance(agg_value, (int, float)):
-                    if agg_value.is_integer() if isinstance(agg_value, float) else True:
-                        formatted_value = f"{int(agg_value):,}"
-                    else:
-                        formatted_value = f"{agg_value:,.2f}"
-                        
-                print(f"{agg_name}: {formatted_value}")
-            print("=" * 50)
-            # Solo devolver los resultados de agregación
-            return visitor.get_results()
+        if mostrar_resultados:
+            print("\nResultados:")
             
-        # Para otros tipos de resultados (filtros, etc.), mostrar registros
-        elif visitor.filtered_data and len(visitor.filtered_data) > 0:
-            # Asegurar que las columnas se muestren en un orden específico para mejor lectura
-            preferred_order = ["id_evento", "nombre_evento", "tipo_evento", "fecha", "lugar", "costo_entrada", "cantidad_asistentes", "estado_evento"]
-            headers = preferred_order + [h for h in visitor.filtered_data[0].keys() if h not in preferred_order]
-            
-            # Calcular el ancho para cada columna
-            widths = {}
-            for h in headers:
-                # Ancho mínimo es el título de la columna
-                widths[h] = max(len(h), 10)
-                for row in visitor.filtered_data:
-                    if h in row:
-                        value_width = len(str(row[h]))
-                        if value_width > widths[h]:
-                            widths[h] = min(value_width, 30)  # Máximo ancho de 30 caracteres
-            
-            # Imprimir encabezado
-            header_row = " | ".join([f"{h:{widths[h]}}" for h in headers if h in widths])
-            print(header_row)
-            print("-" * len(header_row))
-            
-            # Mostrar filas
-            for row in visitor.filtered_data:
-                row_values = []
+            # Verificar si hay resultados de agregación 
+            if visitor.aggregations and len(visitor.aggregations) > 0:
+                print("=" * 50)
+                for agg_name, agg_value in visitor.aggregations.items():
+                    # Formatear el valor si es un número para mayor legibilidad
+                    formatted_value = agg_value
+                    if isinstance(agg_value, (int, float)):
+                        if agg_value.is_integer() if isinstance(agg_value, float) else True:
+                            formatted_value = f"{int(agg_value):,}"
+                        else:
+                            formatted_value = f"{agg_value:,.2f}"
+                            
+                    print(f"{agg_name}: {formatted_value}")
+                print("=" * 50)
+                # Solo devolver los resultados de agregación
+                return visitor.get_results()
+                
+            # Para otros tipos de resultados (filtros, etc.), mostrar registros
+            elif visitor.filtered_data and len(visitor.filtered_data) > 0:
+                # Asegurar que las columnas se muestren en un orden específico para mejor lectura
+                preferred_order = ["id_evento", "nombre_evento", "tipo_evento", "fecha", "lugar", "costo_entrada", "cantidad_asistentes", "estado_evento"]
+                headers = preferred_order + [h for h in visitor.filtered_data[0].keys() if h not in preferred_order]
+                
+                # Calcular el ancho para cada columna
+                widths = {}
                 for h in headers:
-                    if h in row:
-                        value = str(row[h])
-                        # Truncar valores largos
-                        if len(value) > widths[h]:
-                            value = value[:widths[h]-3] + "..."
-                        row_values.append(f"{value:{widths[h]}}")
-                    else:
-                        row_values.append(" " * widths[h])
-                print(" | ".join(row_values))
-            
-            print(f"\nTotal de registros: {len(visitor.filtered_data)}")
-        else:
-            print("No se encontraron registros que cumplan con los filtros.")
-            
+                    # Ancho mínimo es el título de la columna
+                    widths[h] = max(len(h), 10)
+                    for row in visitor.filtered_data:
+                        if h in row:
+                            value_width = len(str(row[h]))
+                            if value_width > widths[h]:
+                                widths[h] = min(value_width, 30)  # Máximo ancho de 30 caracteres
+                
+                # Imprimir encabezado
+                header_row = " | ".join([f"{h:{widths[h]}}" for h in headers if h in widths])
+                print(header_row)
+                print("-" * len(header_row))
+                
+                # Mostrar filas
+                for row in visitor.filtered_data:
+                    row_values = []
+                    for h in headers:
+                        if h in row:
+                            value = str(row[h])
+                            # Truncar valores largos
+                            if len(value) > widths[h]:
+                                value = value[:widths[h]-3] + "..."
+                            row_values.append(f"{value:{widths[h]}}")
+                        else:
+                            row_values.append(" " * widths[h])
+                    print(" | ".join(row_values))
+                
+                print(f"\nTotal de registros: {len(visitor.filtered_data)}")
+            else:
+                print("No se encontraron registros que cumplan con los filtros.")
+        
         return visitor.get_results()
     except Exception as e:
         if mostrar_mensajes:
@@ -329,11 +331,28 @@ def procesar_script_desde_json(ruta_json, consulta_id=None, mostrar_mensajes=Tru
             with open(temp_dsl_file, 'w', encoding='utf-8') as f:
                 f.write(script_dsl)
             
-            # Procesar el script DSL
-            results = procesar_script_desde_dsl(temp_dsl_file, mostrar_mensajes=False)
+            # Procesar el script DSL y obtener resultados
+            # Solo mostrar resultados una vez al final del procesamiento
+            archivo_csv = None
+            for op in operaciones:
+                if op.get("tipo") == "load":
+                    archivo_csv = op.get("archivo")
+                    break
+
+            if archivo_csv and mostrar_mensajes:
+                try:
+                    with open(archivo_csv, newline='', encoding='utf-8') as f:
+                        reader = csv.DictReader(f)
+                        total_rows = sum(1 for _ in reader)
+                        print(f"Archivo '{archivo_csv}' cargado: {total_rows} registros")
+                except Exception as e:
+                    print(f"Error al cargar archivo: {e}")
+            
+            # Procesar el script sin mostrar resultados intermedios
+            results = procesar_script_desde_dsl(temp_dsl_file, mostrar_mensajes=False, mostrar_resultados=False, mostrar_vista_previa=False)
             all_results.extend(results)
             
-            # Mostrar resultados
+            # Mostrar resultados una sola vez de forma estandarizada
             if results:
                 print("\nResultados:")
                 print("=" * 80)
